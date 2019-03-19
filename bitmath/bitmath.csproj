@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathNet.Numerics, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.7.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RenderDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenderDisplay.Designer.cs">
+      <DependentUpon>RenderDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransformCreator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +66,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Voxel.cs" />
+    <EmbeddedResource Include="RenderDisplay.resx">
+      <DependentUpon>RenderDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransformCreator.resx">
       <DependentUpon>TransformCreator.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +81,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -59,7 +59,7 @@ namespace bitmath
             }
             return section;
         }
-        public static Bitmap RenderAll(Voxel[,] v, int xs, int ys, System.Drawing.Imaging.PixelFormat pf, Dictionary<Int32[],Color> Colormap)
+        public static Bitmap RenderAll(Voxel[,] v, int xs, int ys, System.Drawing.Imaging.PixelFormat pf, Dictionary<Double[],Color> Colormap)
         {
             Bitmap b = new Bitmap(xs, ys, pf);
             bool f = false;
