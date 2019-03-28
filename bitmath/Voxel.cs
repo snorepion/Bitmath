@@ -5,6 +5,9 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using MathNet.Numerics;
+using MathNet.Numerics.Random;
+using MathNet.Numerics.Statistics;
 
 namespace bitmath
 {
@@ -19,11 +22,35 @@ namespace bitmath
         public double Weight { get; set; }
         public double Value { get; set; }
         public Point Position { get; set; }
-        public static Voxel[,] GenerateVoxels(int xs, int ys, string FilePath, Double[] weights, Double[,] extrWeights, WeightType[,] extrWeightsType)
+        public static Voxel[,] GenerateVoxels(int xs, int ys, Double[] weights, Double[,] extrWeights, WeightType[,] extrWeightsType, int ChoiceType, double max, double min, double stdev, double[] vals = null, double Default=0.0)
         {
             int x = 0;
             int y = 0;
             Voxel[,] section = new Voxel[xs, ys];
+            CryptoRandomSource r = new CryptoRandomSource();
+            int x2 = 0;
+            int y2 = 0;
+            int i2 = 0;
+            int ind = 0;
+            double d2 = 0;
+            while (y2 < ys)
+            {
+                while (x2 < xs) {
+                    if (ChoiceType == 0)
+                    {
+                        i2 = r.Next(0, vals.Length);
+                        d2 = Reduce(vals[i2], stdev);
+                        if (d2 == 0) d2 = 1;
+                    }
+                    else d2 = Default;
+                    section[x2, y2] = new Voxel(weights[ind], d2, x2, y2);
+                    d2 = 0;
+                    ++x2;
+                    ++ind;
+                }
+                ++y2;
+                x2 = 0;
+            }
             Voxel TopLeft = new Voxel(0.0, 0.0, 0, 0);
             Voxel TopCenter = new Voxel(0.0, 0.0, 0, 0);
             Voxel TopRight = new Voxel(0.0, 0.0, 0, 0);
@@ -32,34 +59,46 @@ namespace bitmath
             Voxel BottomLeft = new Voxel(0.0, 0.0, 0, 0);
             Voxel BottomCenter = new Voxel(0.0, 0.0, 0, 0);
             Voxel BottomRight = new Voxel(0.0, 0.0, 0, 0);
-            while (y <= ys)
+            double d = 0;
+            int i = 0;
+            while (y < ys)
             {
-                while (x <= xs)
+                while (x < xs)
                 {
-                    section[x, y].Weight = weights[x * y];
-                    section[x, y].Position = new Point(x, y);
                     if (x > 0)
                     {
                         CenterLeft = section[x - 1, y];
                         if (y > 0) TopLeft = section[x - 1, y - 1];
-                        if (y < ys) BottomLeft = section[x - 1, y + 1];
+                        if (y < ys - 1) BottomLeft = section[x - 1, y + 1];
                     }
-                    if (x < xs)
+                    if (x < xs - 1)
                     {
                         CenterRight = section[x + 1, y];
                         if (y > 0) TopRight = section[x + 1, y - 1];
-                        if (y < ys) BottomRight = section[x + 1, y + 1];
+                        if (y < ys - 1) BottomRight = section[x + 1, y + 1];
                     }
                     if (y > 0) TopCenter = section[x, y - 1];
-                    if (y < ys) BottomCenter = section[x, y + 1];
-                    section[x, y].Value = CalculateValue(extrWeightsType, extrWeights, TopLeft, TopCenter, TopRight, CenterLeft, CenterRight, BottomLeft, BottomCenter, BottomRight);
-                    x++;
+                    if (y < ys - 1) BottomCenter = section[x, y + 1];
+                    d = CalculateValue(extrWeightsType, extrWeights, TopLeft, TopCenter, TopRight, CenterLeft, CenterRight, BottomLeft, BottomCenter, BottomRight);
+                    if (d == 0)
+                    {
+                        if (ChoiceType == 0)
+                        {
+                            i = r.Next(0, vals.Length);
+                            d = Reduce(vals[i], stdev);
+                            if (d == 0) d = 0.1;
+                        }
+                        else d = Default;
+                    }
+                    section[x, y].Value = Flatten(d, max, min);
+                    ++x;
                 }
-                y++;
+                ++y;
+                x = 0;
             }
             return section;
         }
-        public static Bitmap RenderAll(Voxel[,] v, int xs, int ys, System.Drawing.Imaging.PixelFormat pf, Dictionary<Double[],Color> Colormap)
+        public static Bitmap RenderAll(Voxel[,] v, int xs, int ys, System.Drawing.Imaging.PixelFormat pf, Dictionary<Double[],Color[]> Colormap)
         {
             Bitmap b = new Bitmap(xs, ys, pf);
             bool f = false;
@@ -71,14 +110,31 @@ namespace bitmath
                     f = IsBetween(ve.Value, Colormap.Keys.ElementAt(i)[0], Colormap.Keys.ElementAt(i)[1]);
                     i++;
                 }
-                b.SetPixel(ve.Position.X, ve.Position.Y, Colormap.Values.ElementAt(i));
+                b.SetPixel(ve.Position.X, ve.Position.Y, Colormap.Values.ElementAt(i-1)[0]);
             }
             return b;
         }
+        internal static double Reduce(double a, double b)
+        {
+            if (a < 0) return a + b;
+            else return a - b;
+        }
+        internal static double Flatten(double a, double b, double c)
+        {
+            if (a >= 0)
+            {
+                if (a > b) return b;
+                else return a;
+            }
+            else
+            {
+                if (a < c) return c;
+                else return a;
+            }
+        }
         internal static bool IsBetween(double inp, double i, double ii)
         {
-            if (inp > i & inp < ii) return true;
-            else return false;
+            return inp != 0 && inp > i && inp < ii ? true : false;
         }
         internal static double CalculateValue(WeightType[,] w, Double[,] E, params Voxel[] V)
         {

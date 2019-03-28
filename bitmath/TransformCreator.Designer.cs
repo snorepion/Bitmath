@@ -1,10 +1,15 @@
-﻿namespace bitmath
+﻿using System;
+using System.Runtime.Serialization;
+using System.Windows.Forms;
+
+namespace bitmath
 {
     partial class TransformCreator
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
+        
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
@@ -28,6 +33,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ExpRb = new System.Windows.Forms.RadioButton();
             this.MultiplyRb = new System.Windows.Forms.RadioButton();
@@ -54,9 +60,9 @@
             this.ManualRb = new System.Windows.Forms.RadioButton();
             this.PoissonRb = new System.Windows.Forms.RadioButton();
             this.GaussRb = new System.Windows.Forms.RadioButton();
-            this.MinBoundTb = new System.Windows.Forms.TextBox();
+            this.StdDevTb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.MaxWeightTb = new System.Windows.Forms.TextBox();
+            this.MeanTb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -74,6 +80,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.EnableBatchModeChb = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.FpsTb = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.LambdaTb = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.BmpPaletteCb = new System.Windows.Forms.ComboBox();
@@ -89,16 +97,17 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.renderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renderSilentlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.displayRenderF10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rerenderF5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rerenderSilentlyF6ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.displayRenderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rerenderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rerenderSilentlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applyTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeColorDialog = new System.Windows.Forms.ColorDialog();
-            this.label9 = new System.Windows.Forms.Label();
-            this.FpsTb = new System.Windows.Forms.TextBox();
+            this.ControlStateSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ControlStateS = new bitmath.ControlState();
+            this.VoxelsS = new bitmath.Voxels();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -107,6 +116,9 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.MainMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ControlStateSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ControlStateS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoxelsS)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -189,7 +201,8 @@
             this.CenterRightMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.CenterRightMultiplierTb.TabIndex = 7;
             this.CenterRightMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CenterRightMultiplierTb.TextChanged += new System.EventHandler(this.CenterRightMultiplierTb_TextChanged);
+            this.CenterRightMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.CenterRightMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // BottomRightMultiplierTb
             // 
@@ -199,7 +212,8 @@
             this.BottomRightMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.BottomRightMultiplierTb.TabIndex = 6;
             this.BottomRightMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BottomRightMultiplierTb.TextChanged += new System.EventHandler(this.BottomRightMultiplierTb_TextChanged);
+            this.BottomRightMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.BottomRightMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // BottomCenterMultiplierTb
             // 
@@ -209,7 +223,8 @@
             this.BottomCenterMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.BottomCenterMultiplierTb.TabIndex = 5;
             this.BottomCenterMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BottomCenterMultiplierTb.TextChanged += new System.EventHandler(this.BottomCenterMultiplierTb_TextChanged);
+            this.BottomCenterMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.BottomCenterMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // BottomLeftMultiplierTb
             // 
@@ -219,7 +234,8 @@
             this.BottomLeftMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.BottomLeftMultiplierTb.TabIndex = 4;
             this.BottomLeftMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BottomLeftMultiplierTb.TextChanged += new System.EventHandler(this.BottomLeftMultiplierTb_TextChanged);
+            this.BottomLeftMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.BottomLeftMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // CenterLeftMultiplierTb
             // 
@@ -229,7 +245,8 @@
             this.CenterLeftMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.CenterLeftMultiplierTb.TabIndex = 3;
             this.CenterLeftMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CenterLeftMultiplierTb.TextChanged += new System.EventHandler(this.CenterLeftMultiplierTb_TextChanged);
+            this.CenterLeftMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.CenterLeftMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // TopRightMultiplierTb
             // 
@@ -239,7 +256,8 @@
             this.TopRightMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.TopRightMultiplierTb.TabIndex = 2;
             this.TopRightMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TopRightMultiplierTb.TextChanged += new System.EventHandler(this.TopRightMultiplierTb_TextChanged);
+            this.TopRightMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.TopRightMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // TopCenterMultiplierTb
             // 
@@ -249,7 +267,8 @@
             this.TopCenterMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.TopCenterMultiplierTb.TabIndex = 1;
             this.TopCenterMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TopCenterMultiplierTb.TextChanged += new System.EventHandler(this.TopCenterMultiplierTb_TextChanged);
+            this.TopCenterMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.TopCenterMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // TopLeftMultiplierTb
             // 
@@ -259,7 +278,8 @@
             this.TopLeftMultiplierTb.Size = new System.Drawing.Size(75, 22);
             this.TopLeftMultiplierTb.TabIndex = 0;
             this.TopLeftMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TopLeftMultiplierTb.TextChanged += new System.EventHandler(this.TopLeftMultiplierTb_TextChanged);
+            this.TopLeftMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
+            this.TopLeftMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
             // groupBox2
             // 
@@ -357,9 +377,9 @@
             this.groupBox3.Controls.Add(this.ManualRb);
             this.groupBox3.Controls.Add(this.PoissonRb);
             this.groupBox3.Controls.Add(this.GaussRb);
-            this.groupBox3.Controls.Add(this.MinBoundTb);
+            this.groupBox3.Controls.Add(this.StdDevTb);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.MaxWeightTb);
+            this.groupBox3.Controls.Add(this.MeanTb);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(301, 33);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
@@ -402,6 +422,7 @@
             this.PoissonRb.TabIndex = 16;
             this.PoissonRb.Text = "Poisson";
             this.PoissonRb.UseVisualStyleBackColor = true;
+            this.PoissonRb.CheckedChanged += new System.EventHandler(this.PoissonRb_CheckedChanged);
             // 
             // GaussRb
             // 
@@ -416,14 +437,14 @@
             this.GaussRb.Text = "Gaussian";
             this.GaussRb.UseVisualStyleBackColor = true;
             // 
-            // MinBoundTb
+            // StdDevTb
             // 
-            this.MinBoundTb.Location = new System.Drawing.Point(84, 55);
-            this.MinBoundTb.Margin = new System.Windows.Forms.Padding(4);
-            this.MinBoundTb.Name = "MinBoundTb";
-            this.MinBoundTb.Size = new System.Drawing.Size(75, 22);
-            this.MinBoundTb.TabIndex = 14;
-            this.MinBoundTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StdDevTb.Location = new System.Drawing.Point(84, 55);
+            this.StdDevTb.Margin = new System.Windows.Forms.Padding(4);
+            this.StdDevTb.Name = "StdDevTb";
+            this.StdDevTb.Size = new System.Drawing.Size(75, 22);
+            this.StdDevTb.TabIndex = 14;
+            this.StdDevTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -431,18 +452,18 @@
             this.label3.Location = new System.Drawing.Point(8, 59);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 17);
+            this.label3.Size = new System.Drawing.Size(60, 17);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Minimum";
+            this.label3.Text = "Std. dev";
             // 
-            // MaxWeightTb
+            // MeanTb
             // 
-            this.MaxWeightTb.Location = new System.Drawing.Point(84, 23);
-            this.MaxWeightTb.Margin = new System.Windows.Forms.Padding(4);
-            this.MaxWeightTb.Name = "MaxWeightTb";
-            this.MaxWeightTb.Size = new System.Drawing.Size(75, 22);
-            this.MaxWeightTb.TabIndex = 12;
-            this.MaxWeightTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MeanTb.Location = new System.Drawing.Point(84, 23);
+            this.MeanTb.Margin = new System.Windows.Forms.Padding(4);
+            this.MeanTb.Name = "MeanTb";
+            this.MeanTb.Size = new System.Drawing.Size(75, 22);
+            this.MeanTb.TabIndex = 12;
+            this.MeanTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -450,9 +471,9 @@
             this.label2.Location = new System.Drawing.Point(8, 27);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 17);
+            this.label2.Size = new System.Drawing.Size(43, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Maximum";
+            this.label2.Text = "Mean";
             // 
             // groupBox4
             // 
@@ -533,6 +554,9 @@
             // CustomAnimateChb
             // 
             this.CustomAnimateChb.AutoSize = true;
+            this.CustomAnimateChb.Enabled = false;
+            this.CustomAnimateChb.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.CustomAnimateChb.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.CustomAnimateChb.Location = new System.Drawing.Point(8, 112);
             this.CustomAnimateChb.Margin = new System.Windows.Forms.Padding(4);
             this.CustomAnimateChb.Name = "CustomAnimateChb";
@@ -543,6 +567,7 @@
             // 
             // AnimationEditorBtn
             // 
+            this.AnimationEditorBtn.Enabled = false;
             this.AnimationEditorBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.AnimationEditorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AnimationEditorBtn.ForeColor = System.Drawing.Color.DarkGray;
@@ -556,6 +581,7 @@
             // 
             // frameCtTb
             // 
+            this.frameCtTb.Enabled = false;
             this.frameCtTb.Location = new System.Drawing.Point(136, 71);
             this.frameCtTb.Margin = new System.Windows.Forms.Padding(4);
             this.frameCtTb.Name = "frameCtTb";
@@ -577,6 +603,7 @@
             // 
             this.GifCb.AutoCheck = false;
             this.GifCb.AutoSize = true;
+            this.GifCb.BackColor = System.Drawing.Color.Transparent;
             this.GifCb.Enabled = false;
             this.GifCb.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GifCb.FlatAppearance.BorderSize = 0;
@@ -588,7 +615,7 @@
             this.GifCb.Size = new System.Drawing.Size(48, 21);
             this.GifCb.TabIndex = 4;
             this.GifCb.Text = "GIF";
-            this.GifCb.UseVisualStyleBackColor = true;
+            this.GifCb.UseVisualStyleBackColor = false;
             // 
             // SelectBatchOutputDirectoryBtn
             // 
@@ -607,6 +634,7 @@
             // 
             // BatchOutputTb
             // 
+            this.BatchOutputTb.Enabled = false;
             this.BatchOutputTb.Location = new System.Drawing.Point(68, 39);
             this.BatchOutputTb.Margin = new System.Windows.Forms.Padding(4);
             this.BatchOutputTb.Name = "BatchOutputTb";
@@ -654,6 +682,24 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Details";
             // 
+            // FpsTb
+            // 
+            this.FpsTb.Location = new System.Drawing.Point(91, 109);
+            this.FpsTb.Name = "FpsTb";
+            this.FpsTb.ReadOnly = true;
+            this.FpsTb.Size = new System.Drawing.Size(168, 22);
+            this.FpsTb.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 112);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 17);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Frames/sec";
+            // 
             // LambdaTb
             // 
             this.LambdaTb.Location = new System.Drawing.Point(91, 80);
@@ -677,10 +723,7 @@
             this.BmpPaletteCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BmpPaletteCb.FormattingEnabled = true;
             this.BmpPaletteCb.Items.AddRange(new object[] {
-            "1 bpp - black and white",
-            "8 bpp - 256 colors",
-            "8 bpp - grayscale",
-            "16 bpp - 65535 colors",
+            "16 bpp - 32768 colors",
             "32 bpp - standard ARGB"});
             this.BmpPaletteCb.Location = new System.Drawing.Point(91, 49);
             this.BmpPaletteCb.Margin = new System.Windows.Forms.Padding(4);
@@ -712,6 +755,7 @@
             this.VxCtCb.Name = "VxCtCb";
             this.VxCtCb.Size = new System.Drawing.Size(168, 24);
             this.VxCtCb.TabIndex = 1;
+            this.VxCtCb.Text = "128x128";
             // 
             // label4
             // 
@@ -746,9 +790,9 @@
             this.toolStripSeparator1,
             this.renderToolStripMenuItem,
             this.renderSilentlyToolStripMenuItem,
-            this.displayRenderF10ToolStripMenuItem,
-            this.rerenderF5ToolStripMenuItem,
-            this.rerenderSilentlyF6ToolStripMenuItem});
+            this.displayRenderToolStripMenuItem,
+            this.rerenderToolStripMenuItem,
+            this.rerenderSilentlyToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -758,12 +802,14 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.newToolStripMenuItem.Text = "New (Ctrl+N)";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.openToolStripMenuItem.Text = "Open (Ctrl+O)";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -776,6 +822,7 @@
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.saveAsToolStripMenuItem.Text = "Save as... (Ctrl+Shift+S)";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -787,30 +834,35 @@
             this.renderToolStripMenuItem.Name = "renderToolStripMenuItem";
             this.renderToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.renderToolStripMenuItem.Text = "Render (F11)";
+            this.renderToolStripMenuItem.Click += new System.EventHandler(this.renderToolStripMenuItem_Click);
             // 
             // renderSilentlyToolStripMenuItem
             // 
             this.renderSilentlyToolStripMenuItem.Name = "renderSilentlyToolStripMenuItem";
             this.renderSilentlyToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.renderSilentlyToolStripMenuItem.Text = "Render silently (F12)";
+            this.renderSilentlyToolStripMenuItem.Click += new System.EventHandler(this.renderSilentlyToolStripMenuItem_Click);
             // 
-            // displayRenderF10ToolStripMenuItem
+            // displayRenderToolStripMenuItem
             // 
-            this.displayRenderF10ToolStripMenuItem.Name = "displayRenderF10ToolStripMenuItem";
-            this.displayRenderF10ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
-            this.displayRenderF10ToolStripMenuItem.Text = "Display render (F10)";
+            this.displayRenderToolStripMenuItem.Name = "displayRenderToolStripMenuItem";
+            this.displayRenderToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.displayRenderToolStripMenuItem.Text = "Display render (F10)";
+            this.displayRenderToolStripMenuItem.Click += new System.EventHandler(this.displayRenderF10ToolStripMenuItem_Click);
             // 
-            // rerenderF5ToolStripMenuItem
+            // rerenderToolStripMenuItem
             // 
-            this.rerenderF5ToolStripMenuItem.Name = "rerenderF5ToolStripMenuItem";
-            this.rerenderF5ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
-            this.rerenderF5ToolStripMenuItem.Text = "Rerender (F5)";
+            this.rerenderToolStripMenuItem.Name = "rerenderToolStripMenuItem";
+            this.rerenderToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.rerenderToolStripMenuItem.Text = "Rerender (F5)";
+            this.rerenderToolStripMenuItem.Click += new System.EventHandler(this.rerenderToolStripMenuItem_Click);
             // 
-            // rerenderSilentlyF6ToolStripMenuItem
+            // rerenderSilentlyToolStripMenuItem
             // 
-            this.rerenderSilentlyF6ToolStripMenuItem.Name = "rerenderSilentlyF6ToolStripMenuItem";
-            this.rerenderSilentlyF6ToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
-            this.rerenderSilentlyF6ToolStripMenuItem.Text = "Rerender silently (F6)";
+            this.rerenderSilentlyToolStripMenuItem.Name = "rerenderSilentlyToolStripMenuItem";
+            this.rerenderSilentlyToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.rerenderSilentlyToolStripMenuItem.Text = "Rerender silently (F6)";
+            this.rerenderSilentlyToolStripMenuItem.Click += new System.EventHandler(this.rerenderSilentlyToolStripMenuItem_Click);
             // 
             // modifyToolStripMenuItem
             // 
@@ -837,31 +889,28 @@
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
-            this.contentsToolStripMenuItem.Text = "Contents";
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.contentsToolStripMenuItem.Text = "Contents (F1)";
             // 
             // ChangeColorDialog
             // 
             this.ChangeColorDialog.AnyColor = true;
             this.ChangeColorDialog.FullOpen = true;
             // 
-            // label9
+            // ControlStateSource
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 112);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 17);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Frames/sec";
+            this.ControlStateSource.DataSource = this.ControlStateS;
+            this.ControlStateSource.Position = 0;
             // 
-            // FpsTb
+            // ControlStateS
             // 
-            this.FpsTb.Location = new System.Drawing.Point(91, 109);
-            this.FpsTb.Name = "FpsTb";
-            this.FpsTb.ReadOnly = true;
-            this.FpsTb.Size = new System.Drawing.Size(168, 22);
-            this.FpsTb.TabIndex = 7;
+            this.ControlStateS.DataSetName = "ControlState";
+            this.ControlStateS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // VoxelsS
+            // 
+            this.VoxelsS.DataSetName = "Voxels";
+            this.VoxelsS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // TransformCreator
             // 
@@ -892,84 +941,89 @@
             this.groupBox5.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ControlStateSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ControlStateS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VoxelsS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton ExpRb;
-        private System.Windows.Forms.RadioButton MultiplyRb;
-        private System.Windows.Forms.RadioButton AddRb;
-        private System.Windows.Forms.TextBox CenterMuliplierTb;
-        private System.Windows.Forms.TextBox CenterRightMultiplierTb;
-        private System.Windows.Forms.TextBox BottomRightMultiplierTb;
-        private System.Windows.Forms.TextBox BottomCenterMultiplierTb;
-        private System.Windows.Forms.TextBox BottomLeftMultiplierTb;
-        private System.Windows.Forms.TextBox CenterLeftMultiplierTb;
-        private System.Windows.Forms.TextBox TopRightMultiplierTb;
-        private System.Windows.Forms.TextBox TopCenterMultiplierTb;
-        private System.Windows.Forms.TextBox TopLeftMultiplierTb;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox UpperBoundTb;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox LowerBoundTb;
-        private System.Windows.Forms.ListBox VoxelPossibleValuesListBox;
-        private System.Windows.Forms.Panel ColorVisualizerBox;
-        private System.Windows.Forms.Button AddVoxelPossibleValueBtn;
-        private System.Windows.Forms.Button RemoveVoxelPossibleValueBtn;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton GaussRb;
-        private System.Windows.Forms.TextBox MinBoundTb;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox MaxWeightTb;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton PoissonRb;
-        private System.Windows.Forms.Button ManualEditBtn;
-        private System.Windows.Forms.RadioButton ManualRb;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.MenuStrip MainMenu;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem renderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renderSilentlyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem displayRenderF10ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rerenderF5ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rerenderSilentlyF6ToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox VxCtCb;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem applyTransformToolStripMenuItem;
-        private System.Windows.Forms.ComboBox BmpPaletteCb;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.CheckBox EnableBatchModeChb;
-        private System.Windows.Forms.CheckBox GifCb;
-        private System.Windows.Forms.Button SelectBatchOutputDirectoryBtn;
-        private System.Windows.Forms.TextBox BatchOutputTb;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox frameCtTb;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox CustomAnimateChb;
-        private System.Windows.Forms.Button AnimationEditorBtn;
-        private System.Windows.Forms.TextBox LambdaTb;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox DefaultToTb;
-        private System.Windows.Forms.RadioButton DefaultRb;
-        private System.Windows.Forms.RadioButton ProbabilisticChoiceRb;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
-        private System.Windows.Forms.ColorDialog ChangeColorDialog;
-        private System.Windows.Forms.TextBox FpsTb;
-        private System.Windows.Forms.Label label9;
+        private ControlState ControlState;
+        public GroupBox groupBox1;
+        public RadioButton ExpRb;
+        public RadioButton MultiplyRb;
+        public RadioButton AddRb;
+        public TextBox CenterMuliplierTb;
+        public TextBox CenterRightMultiplierTb;
+        public TextBox BottomRightMultiplierTb;
+        public TextBox BottomCenterMultiplierTb;
+        public TextBox BottomLeftMultiplierTb;
+        public TextBox CenterLeftMultiplierTb;
+        public TextBox TopRightMultiplierTb;
+        public TextBox TopCenterMultiplierTb;
+        public TextBox TopLeftMultiplierTb;
+        public GroupBox groupBox2;
+        public TextBox UpperBoundTb;
+        public Label label1;
+        public TextBox LowerBoundTb;
+        public ListBox VoxelPossibleValuesListBox;
+        public Panel ColorVisualizerBox;
+        public Button AddVoxelPossibleValueBtn;
+        public Button RemoveVoxelPossibleValueBtn;
+        public GroupBox groupBox3;
+        public RadioButton GaussRb;
+        public TextBox StdDevTb;
+        public Label label3;
+        public TextBox MeanTb;
+        public Label label2;
+        public RadioButton PoissonRb;
+        public Button ManualEditBtn;
+        public RadioButton ManualRb;
+        public GroupBox groupBox4;
+        public MenuStrip MainMenu;
+        public ToolStripMenuItem fileToolStripMenuItem;
+        public ToolStripMenuItem newToolStripMenuItem;
+        public ToolStripMenuItem openToolStripMenuItem;
+        public ToolStripMenuItem saveToolStripMenuItem;
+        public ToolStripMenuItem saveAsToolStripMenuItem;
+        public ToolStripSeparator toolStripSeparator1;
+        public ToolStripMenuItem renderToolStripMenuItem;
+        public ToolStripMenuItem renderSilentlyToolStripMenuItem;
+        public ToolStripMenuItem displayRenderToolStripMenuItem;
+        public ToolStripMenuItem rerenderToolStripMenuItem;
+        public ToolStripMenuItem rerenderSilentlyToolStripMenuItem;
+        public GroupBox groupBox5;
+        public ComboBox VxCtCb;
+        public Label label4;
+        public ToolStripMenuItem modifyToolStripMenuItem;
+        public ToolStripMenuItem applyTransformToolStripMenuItem;
+        public ComboBox BmpPaletteCb;
+        public Label label5;
+        public GroupBox groupBox6;
+        public CheckBox EnableBatchModeChb;
+        public CheckBox GifCb;
+        public Button SelectBatchOutputDirectoryBtn;
+        public TextBox BatchOutputTb;
+        public Label label6;
+        public TextBox frameCtTb;
+        public Label label7;
+        public CheckBox CustomAnimateChb;
+        public Button AnimationEditorBtn;
+        public TextBox LambdaTb;
+        public Label label8;
+        public GroupBox groupBox7;
+        public TextBox DefaultToTb;
+        public RadioButton DefaultRb;
+        public RadioButton ProbabilisticChoiceRb;
+        public ToolStripMenuItem helpToolStripMenuItem;
+        public ToolStripMenuItem contentsToolStripMenuItem;
+        public ColorDialog ChangeColorDialog;
+        public TextBox FpsTb;
+        public Label label9;
+        public BindingSource ControlStateSource;
+        public ControlState ControlStateS;
+        private Voxels VoxelsS;
     }
 }
 

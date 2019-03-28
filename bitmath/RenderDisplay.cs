@@ -19,9 +19,11 @@ namespace bitmath
             BmpToDisplay = b;
             ReloadImage();
         }
-        public void ReloadImage()
+        public void ReloadImage() => Viewport.Image = BmpToDisplay;
+        private void RenderDisplay_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Viewport.Image = BmpToDisplay;
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

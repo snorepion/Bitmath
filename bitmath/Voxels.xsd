@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Voxels" targetNamespace="Voxels.xsd" xmlns:mstns="Voxels.xsd" xmlns="Voxels.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Voxels" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Voxels" msprop:Generator_UserDSName="Voxels">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VoxelData" msprop:Generator_TableClassName="VoxelDataDataTable" msprop:Generator_TableVarName="tableVoxelData" msprop:Generator_RowChangedName="VoxelDataRowChanged" msprop:Generator_TablePropName="VoxelData" msprop:Generator_RowDeletingName="VoxelDataRowDeleting" msprop:Generator_RowChangingName="VoxelDataRowChanging" msprop:Generator_RowEvHandlerName="VoxelDataRowChangeEventHandler" msprop:Generator_RowDeletedName="VoxelDataRowDeleted" msprop:Generator_RowClassName="VoxelDataRow" msprop:Generator_UserTableName="VoxelData" msprop:Generator_RowEvArgName="VoxelDataRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Val" msprop:Generator_ColumnVarNameInTable="columnVal" msprop:Generator_ColumnPropNameInRow="Val" msprop:Generator_ColumnPropNameInTable="ValColumn" msprop:Generator_UserColumnName="Val" type="xs:double" minOccurs="0" />
+              <xs:element name="W" msprop:Generator_ColumnVarNameInTable="columnW" msprop:Generator_ColumnPropNameInRow="W" msprop:Generator_ColumnPropNameInTable="WColumn" msprop:Generator_UserColumnName="W" type="xs:double" minOccurs="0" />
+              <xs:element name="Pos" msdata:DataType="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msprop:Generator_ColumnVarNameInTable="columnPos" msprop:Generator_ColumnPropNameInRow="Pos" msprop:Generator_ColumnPropNameInTable="PosColumn" msprop:Generator_UserColumnName="Pos" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

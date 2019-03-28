@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ControlState" targetNamespace="ControlState.xsd" xmlns:mstns="ControlState.xsd" xmlns="ControlState.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ControlState" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ControlState" msprop:Generator_UserDSName="ControlState">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RadioButtons" msprop:Generator_TableClassName="RadioButtonsDataTable" msprop:Generator_TableVarName="tableRadioButtons" msprop:Generator_TablePropName="RadioButtons" msprop:Generator_RowDeletingName="RadioButtonsRowDeleting" msprop:Generator_RowChangingName="RadioButtonsRowChanging" msprop:Generator_RowEvHandlerName="RadioButtonsRowChangeEventHandler" msprop:Generator_RowDeletedName="RadioButtonsRowDeleted" msprop:Generator_UserTableName="RadioButtons" msprop:Generator_RowChangedName="RadioButtonsRowChanged" msprop:Generator_RowEvArgName="RadioButtonsRowChangeEvent" msprop:Generator_RowClassName="RadioButtonsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
+              <xs:element name="Checked" msprop:Generator_ColumnVarNameInTable="columnChecked" msprop:Generator_ColumnPropNameInRow="Checked" msprop:Generator_ColumnPropNameInTable="CheckedColumn" msprop:Generator_UserColumnName="Checked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CheckBoxes" msprop:Generator_TableClassName="CheckBoxesDataTable" msprop:Generator_TableVarName="tableCheckBoxes" msprop:Generator_TablePropName="CheckBoxes" msprop:Generator_RowDeletingName="CheckBoxesRowDeleting" msprop:Generator_RowChangingName="CheckBoxesRowChanging" msprop:Generator_RowEvHandlerName="CheckBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="CheckBoxesRowDeleted" msprop:Generator_UserTableName="CheckBoxes" msprop:Generator_RowChangedName="CheckBoxesRowChanged" msprop:Generator_RowEvArgName="CheckBoxesRowChangeEvent" msprop:Generator_RowClassName="CheckBoxesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
+              <xs:element name="Checked" msprop:Generator_ColumnVarNameInTable="columnChecked" msprop:Generator_ColumnPropNameInRow="Checked" msprop:Generator_ColumnPropNameInTable="CheckedColumn" msprop:Generator_UserColumnName="Checked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ComboBoxes" msprop:Generator_TableClassName="ComboBoxesDataTable" msprop:Generator_TableVarName="tableComboBoxes" msprop:Generator_TablePropName="ComboBoxes" msprop:Generator_RowDeletingName="ComboBoxesRowDeleting" msprop:Generator_RowChangingName="ComboBoxesRowChanging" msprop:Generator_RowEvHandlerName="ComboBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="ComboBoxesRowDeleted" msprop:Generator_UserTableName="ComboBoxes" msprop:Generator_RowChangedName="ComboBoxesRowChanged" msprop:Generator_RowEvArgName="ComboBoxesRowChangeEvent" msprop:Generator_RowClassName="ComboBoxesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
+              <xs:element name="SelectedIndex" msprop:Generator_ColumnVarNameInTable="columnSelectedIndex" msprop:Generator_ColumnPropNameInRow="SelectedIndex" msprop:Generator_ColumnPropNameInTable="SelectedIndexColumn" msprop:Generator_UserColumnName="SelectedIndex" type="xs:int" minOccurs="0" />
+              <xs:element name="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnPropNameInTable="TextColumn" msprop:Generator_UserColumnName="Text" type="xs:string" minOccurs="0" />
+              <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TextBoxes" msprop:Generator_TableClassName="TextBoxesDataTable" msprop:Generator_TableVarName="tableTextBoxes" msprop:Generator_TablePropName="TextBoxes" msprop:Generator_RowDeletingName="TextBoxesRowDeleting" msprop:Generator_RowChangingName="TextBoxesRowChanging" msprop:Generator_RowEvHandlerName="TextBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="TextBoxesRowDeleted" msprop:Generator_UserTableName="TextBoxes" msprop:Generator_RowChangedName="TextBoxesRowChanged" msprop:Generator_RowEvArgName="TextBoxesRowChangeEvent" msprop:Generator_RowClassName="TextBoxesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
+              <xs:element name="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnPropNameInTable="TextColumn" msprop:Generator_UserColumnName="Text" type="xs:string" minOccurs="0" />
+              <xs:element name="ReadOnly" msprop:Generator_ColumnVarNameInTable="columnReadOnly" msprop:Generator_ColumnPropNameInRow="ReadOnly" msprop:Generator_ColumnPropNameInTable="ReadOnlyColumn" msprop:Generator_UserColumnName="ReadOnly" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListBoxes" msprop:Generator_TableClassName="ListBoxesDataTable" msprop:Generator_TableVarName="tableListBoxes" msprop:Generator_TablePropName="ListBoxes" msprop:Generator_RowDeletingName="ListBoxesRowDeleting" msprop:Generator_RowChangingName="ListBoxesRowChanging" msprop:Generator_RowEvHandlerName="ListBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="ListBoxesRowDeleted" msprop:Generator_UserTableName="ListBoxes" msprop:Generator_RowChangedName="ListBoxesRowChanged" msprop:Generator_RowEvArgName="ListBoxesRowChangeEvent" msprop:Generator_RowClassName="ListBoxesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
+              <xs:element name="Items" msdata:DataType="System.Object[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnItems" msprop:Generator_ColumnPropNameInRow="Items" msprop:Generator_ColumnPropNameInTable="ItemsColumn" msprop:Generator_UserColumnName="Items" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -51,6 +51,7 @@
             this.Controls.Add(this.Viewport);
             this.Name = "RenderDisplay";
             this.Text = "Rendered image";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RenderDisplay_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.Viewport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
