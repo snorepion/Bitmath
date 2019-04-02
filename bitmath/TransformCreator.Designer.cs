@@ -47,14 +47,7 @@ namespace bitmath
             this.TopRightMultiplierTb = new System.Windows.Forms.TextBox();
             this.TopCenterMultiplierTb = new System.Windows.Forms.TextBox();
             this.TopLeftMultiplierTb = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RemoveVoxelPossibleValueBtn = new System.Windows.Forms.Button();
-            this.ColorVisualizerBox = new System.Windows.Forms.Panel();
-            this.AddVoxelPossibleValueBtn = new System.Windows.Forms.Button();
-            this.UpperBoundTb = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.LowerBoundTb = new System.Windows.Forms.TextBox();
-            this.VoxelPossibleValuesListBox = new System.Windows.Forms.ListBox();
+            this.ColorVisualizerBoxOn = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ManualEditBtn = new System.Windows.Forms.Button();
             this.ManualRb = new System.Windows.Forms.RadioButton();
@@ -65,10 +58,6 @@ namespace bitmath
             this.MeanTb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.DefaultToTb = new System.Windows.Forms.TextBox();
-            this.DefaultRb = new System.Windows.Forms.RadioButton();
-            this.ProbabilisticChoiceRb = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.CustomAnimateChb = new System.Windows.Forms.CheckBox();
             this.AnimationEditorBtn = new System.Windows.Forms.Button();
@@ -88,6 +77,11 @@ namespace bitmath
             this.label5 = new System.Windows.Forms.Label();
             this.VxCtCb = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.ColorVisualizerBoxOff = new System.Windows.Forms.Panel();
+            this.DefaultToTb = new System.Windows.Forms.TextBox();
+            this.DefaultRb = new System.Windows.Forms.RadioButton();
+            this.ProbabilisticChoiceRb = new System.Windows.Forms.RadioButton();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,20 +99,19 @@ namespace bitmath
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeColorDialog = new System.Windows.Forms.ColorDialog();
+            this.VoxelsS = new bitmath.Voxels();
             this.ControlStateSource = new System.Windows.Forms.BindingSource(this.components);
             this.ControlStateS = new bitmath.ControlState();
-            this.VoxelsS = new bitmath.Voxels();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.MainMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoxelsS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ControlStateSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ControlStateS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VoxelsS)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -135,11 +128,11 @@ namespace bitmath
             this.groupBox1.Controls.Add(this.TopRightMultiplierTb);
             this.groupBox1.Controls.Add(this.TopCenterMultiplierTb);
             this.groupBox1.Controls.Add(this.TopLeftMultiplierTb);
-            this.groupBox1.Location = new System.Drawing.Point(509, 33);
+            this.groupBox1.Location = new System.Drawing.Point(399, 33);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(261, 140);
+            this.groupBox1.Size = new System.Drawing.Size(194, 140);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Effect of other voxels";
@@ -147,12 +140,12 @@ namespace bitmath
             // ExpRb
             // 
             this.ExpRb.AutoSize = true;
-            this.ExpRb.Location = new System.Drawing.Point(163, 116);
+            this.ExpRb.Location = new System.Drawing.Point(132, 116);
             this.ExpRb.Margin = new System.Windows.Forms.Padding(4);
             this.ExpRb.Name = "ExpRb";
-            this.ExpRb.Size = new System.Drawing.Size(88, 21);
+            this.ExpRb.Size = new System.Drawing.Size(36, 21);
             this.ExpRb.TabIndex = 11;
-            this.ExpRb.Text = "Exponent";
+            this.ExpRb.Text = "^";
             this.ExpRb.UseVisualStyleBackColor = true;
             this.ExpRb.CheckedChanged += new System.EventHandler(this.ExpRb_CheckedChanged);
             // 
@@ -160,13 +153,13 @@ namespace bitmath
             // 
             this.MultiplyRb.AutoSize = true;
             this.MultiplyRb.Checked = true;
-            this.MultiplyRb.Location = new System.Drawing.Point(75, 116);
+            this.MultiplyRb.Location = new System.Drawing.Point(70, 116);
             this.MultiplyRb.Margin = new System.Windows.Forms.Padding(4);
             this.MultiplyRb.Name = "MultiplyRb";
-            this.MultiplyRb.Size = new System.Drawing.Size(76, 21);
+            this.MultiplyRb.Size = new System.Drawing.Size(34, 21);
             this.MultiplyRb.TabIndex = 10;
             this.MultiplyRb.TabStop = true;
-            this.MultiplyRb.Text = "Multiply";
+            this.MultiplyRb.Text = "*";
             this.MultiplyRb.UseVisualStyleBackColor = true;
             this.MultiplyRb.CheckedChanged += new System.EventHandler(this.MultiplyRb_CheckedChanged);
             // 
@@ -176,29 +169,29 @@ namespace bitmath
             this.AddRb.Location = new System.Drawing.Point(8, 116);
             this.AddRb.Margin = new System.Windows.Forms.Padding(4);
             this.AddRb.Name = "AddRb";
-            this.AddRb.Size = new System.Drawing.Size(54, 21);
+            this.AddRb.Size = new System.Drawing.Size(37, 21);
             this.AddRb.TabIndex = 9;
-            this.AddRb.Text = "Add";
+            this.AddRb.Text = "+";
             this.AddRb.UseVisualStyleBackColor = true;
             this.AddRb.CheckedChanged += new System.EventHandler(this.AddRb_CheckedChanged);
             // 
             // CenterMuliplierTb
             // 
-            this.CenterMuliplierTb.Location = new System.Drawing.Point(92, 55);
+            this.CenterMuliplierTb.Location = new System.Drawing.Point(70, 56);
             this.CenterMuliplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.CenterMuliplierTb.Name = "CenterMuliplierTb";
             this.CenterMuliplierTb.ReadOnly = true;
-            this.CenterMuliplierTb.Size = new System.Drawing.Size(75, 22);
+            this.CenterMuliplierTb.Size = new System.Drawing.Size(54, 22);
             this.CenterMuliplierTb.TabIndex = 8;
             this.CenterMuliplierTb.Text = "Base";
             this.CenterMuliplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CenterRightMultiplierTb
             // 
-            this.CenterRightMultiplierTb.Location = new System.Drawing.Point(176, 55);
+            this.CenterRightMultiplierTb.Location = new System.Drawing.Point(132, 56);
             this.CenterRightMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.CenterRightMultiplierTb.Name = "CenterRightMultiplierTb";
-            this.CenterRightMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.CenterRightMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.CenterRightMultiplierTb.TabIndex = 7;
             this.CenterRightMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CenterRightMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -206,10 +199,10 @@ namespace bitmath
             // 
             // BottomRightMultiplierTb
             // 
-            this.BottomRightMultiplierTb.Location = new System.Drawing.Point(176, 87);
+            this.BottomRightMultiplierTb.Location = new System.Drawing.Point(132, 87);
             this.BottomRightMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.BottomRightMultiplierTb.Name = "BottomRightMultiplierTb";
-            this.BottomRightMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.BottomRightMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.BottomRightMultiplierTb.TabIndex = 6;
             this.BottomRightMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BottomRightMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -217,10 +210,10 @@ namespace bitmath
             // 
             // BottomCenterMultiplierTb
             // 
-            this.BottomCenterMultiplierTb.Location = new System.Drawing.Point(92, 87);
+            this.BottomCenterMultiplierTb.Location = new System.Drawing.Point(70, 87);
             this.BottomCenterMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.BottomCenterMultiplierTb.Name = "BottomCenterMultiplierTb";
-            this.BottomCenterMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.BottomCenterMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.BottomCenterMultiplierTb.TabIndex = 5;
             this.BottomCenterMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BottomCenterMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -231,7 +224,7 @@ namespace bitmath
             this.BottomLeftMultiplierTb.Location = new System.Drawing.Point(8, 87);
             this.BottomLeftMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.BottomLeftMultiplierTb.Name = "BottomLeftMultiplierTb";
-            this.BottomLeftMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.BottomLeftMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.BottomLeftMultiplierTb.TabIndex = 4;
             this.BottomLeftMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BottomLeftMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -239,10 +232,10 @@ namespace bitmath
             // 
             // CenterLeftMultiplierTb
             // 
-            this.CenterLeftMultiplierTb.Location = new System.Drawing.Point(8, 55);
+            this.CenterLeftMultiplierTb.Location = new System.Drawing.Point(8, 56);
             this.CenterLeftMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.CenterLeftMultiplierTb.Name = "CenterLeftMultiplierTb";
-            this.CenterLeftMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.CenterLeftMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.CenterLeftMultiplierTb.TabIndex = 3;
             this.CenterLeftMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CenterLeftMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -250,10 +243,10 @@ namespace bitmath
             // 
             // TopRightMultiplierTb
             // 
-            this.TopRightMultiplierTb.Location = new System.Drawing.Point(176, 23);
+            this.TopRightMultiplierTb.Location = new System.Drawing.Point(132, 23);
             this.TopRightMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.TopRightMultiplierTb.Name = "TopRightMultiplierTb";
-            this.TopRightMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.TopRightMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.TopRightMultiplierTb.TabIndex = 2;
             this.TopRightMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TopRightMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -261,10 +254,10 @@ namespace bitmath
             // 
             // TopCenterMultiplierTb
             // 
-            this.TopCenterMultiplierTb.Location = new System.Drawing.Point(92, 23);
+            this.TopCenterMultiplierTb.Location = new System.Drawing.Point(70, 23);
             this.TopCenterMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.TopCenterMultiplierTb.Name = "TopCenterMultiplierTb";
-            this.TopCenterMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.TopCenterMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.TopCenterMultiplierTb.TabIndex = 1;
             this.TopCenterMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TopCenterMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
@@ -275,101 +268,22 @@ namespace bitmath
             this.TopLeftMultiplierTb.Location = new System.Drawing.Point(8, 23);
             this.TopLeftMultiplierTb.Margin = new System.Windows.Forms.Padding(4);
             this.TopLeftMultiplierTb.Name = "TopLeftMultiplierTb";
-            this.TopLeftMultiplierTb.Size = new System.Drawing.Size(75, 22);
+            this.TopLeftMultiplierTb.Size = new System.Drawing.Size(54, 22);
             this.TopLeftMultiplierTb.TabIndex = 0;
             this.TopLeftMultiplierTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TopLeftMultiplierTb.TextChanged += new System.EventHandler(this.MultiplierTb_TextChanged);
             this.TopLeftMultiplierTb.Enter += new System.EventHandler(this.MultiplierTb_Enter);
             // 
-            // groupBox2
+            // ColorVisualizerBoxOn
             // 
-            this.groupBox2.Controls.Add(this.RemoveVoxelPossibleValueBtn);
-            this.groupBox2.Controls.Add(this.ColorVisualizerBox);
-            this.groupBox2.Controls.Add(this.AddVoxelPossibleValueBtn);
-            this.groupBox2.Controls.Add(this.UpperBoundTb);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.LowerBoundTb);
-            this.groupBox2.Controls.Add(this.VoxelPossibleValuesListBox);
-            this.groupBox2.Location = new System.Drawing.Point(16, 33);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(277, 140);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Voxel values";
-            // 
-            // RemoveVoxelPossibleValueBtn
-            // 
-            this.RemoveVoxelPossibleValueBtn.Location = new System.Drawing.Point(176, 64);
-            this.RemoveVoxelPossibleValueBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.RemoveVoxelPossibleValueBtn.Name = "RemoveVoxelPossibleValueBtn";
-            this.RemoveVoxelPossibleValueBtn.Size = new System.Drawing.Size(93, 28);
-            this.RemoveVoxelPossibleValueBtn.TabIndex = 6;
-            this.RemoveVoxelPossibleValueBtn.Text = "Remove";
-            this.RemoveVoxelPossibleValueBtn.UseVisualStyleBackColor = true;
-            this.RemoveVoxelPossibleValueBtn.Click += new System.EventHandler(this.RemoveVoxelPossibleValueBtn_Click);
-            // 
-            // ColorVisualizerBox
-            // 
-            this.ColorVisualizerBox.BackColor = System.Drawing.Color.White;
-            this.ColorVisualizerBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ColorVisualizerBox.Location = new System.Drawing.Point(176, 100);
-            this.ColorVisualizerBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ColorVisualizerBox.Name = "ColorVisualizerBox";
-            this.ColorVisualizerBox.Size = new System.Drawing.Size(58, 29);
-            this.ColorVisualizerBox.TabIndex = 5;
-            this.ColorVisualizerBox.Click += new System.EventHandler(this.ColorVisualizerBox_Click);
-            // 
-            // AddVoxelPossibleValueBtn
-            // 
-            this.AddVoxelPossibleValueBtn.Location = new System.Drawing.Point(176, 32);
-            this.AddVoxelPossibleValueBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.AddVoxelPossibleValueBtn.Name = "AddVoxelPossibleValueBtn";
-            this.AddVoxelPossibleValueBtn.Size = new System.Drawing.Size(93, 28);
-            this.AddVoxelPossibleValueBtn.TabIndex = 4;
-            this.AddVoxelPossibleValueBtn.Text = "Add";
-            this.AddVoxelPossibleValueBtn.UseVisualStyleBackColor = true;
-            this.AddVoxelPossibleValueBtn.Click += new System.EventHandler(this.AddVoxelPossibleValueBtn_Click);
-            // 
-            // UpperBoundTb
-            // 
-            this.UpperBoundTb.Location = new System.Drawing.Point(100, 108);
-            this.UpperBoundTb.Margin = new System.Windows.Forms.Padding(4);
-            this.UpperBoundTb.Name = "UpperBoundTb";
-            this.UpperBoundTb.Size = new System.Drawing.Size(67, 22);
-            this.UpperBoundTb.TabIndex = 3;
-            this.UpperBoundTb.TextChanged += new System.EventHandler(this.UpperBoundTb_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 112);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "to";
-            // 
-            // LowerBoundTb
-            // 
-            this.LowerBoundTb.Location = new System.Drawing.Point(8, 108);
-            this.LowerBoundTb.Margin = new System.Windows.Forms.Padding(4);
-            this.LowerBoundTb.Name = "LowerBoundTb";
-            this.LowerBoundTb.Size = new System.Drawing.Size(53, 22);
-            this.LowerBoundTb.TabIndex = 1;
-            this.LowerBoundTb.TextChanged += new System.EventHandler(this.LowerBoundTb_TextChanged);
-            // 
-            // VoxelPossibleValuesListBox
-            // 
-            this.VoxelPossibleValuesListBox.FormattingEnabled = true;
-            this.VoxelPossibleValuesListBox.ItemHeight = 16;
-            this.VoxelPossibleValuesListBox.Location = new System.Drawing.Point(8, 32);
-            this.VoxelPossibleValuesListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.VoxelPossibleValuesListBox.Name = "VoxelPossibleValuesListBox";
-            this.VoxelPossibleValuesListBox.Size = new System.Drawing.Size(159, 68);
-            this.VoxelPossibleValuesListBox.TabIndex = 0;
-            this.VoxelPossibleValuesListBox.SelectedIndexChanged += new System.EventHandler(this.VoxelPossibleValuesListBox_SelectedIndexChanged);
+            this.ColorVisualizerBoxOn.BackColor = System.Drawing.Color.White;
+            this.ColorVisualizerBoxOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ColorVisualizerBoxOn.Location = new System.Drawing.Point(85, 78);
+            this.ColorVisualizerBoxOn.Margin = new System.Windows.Forms.Padding(4);
+            this.ColorVisualizerBoxOn.Name = "ColorVisualizerBoxOn";
+            this.ColorVisualizerBoxOn.Size = new System.Drawing.Size(71, 20);
+            this.ColorVisualizerBoxOn.TabIndex = 5;
+            this.ColorVisualizerBoxOn.Click += new System.EventHandler(this.ColorVisualizerBoxOn_Click);
             // 
             // groupBox3
             // 
@@ -381,7 +295,7 @@ namespace bitmath
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.MeanTb);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(301, 33);
+            this.groupBox3.Location = new System.Drawing.Point(186, 33);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
@@ -439,12 +353,11 @@ namespace bitmath
             // 
             // StdDevTb
             // 
-            this.StdDevTb.Location = new System.Drawing.Point(84, 55);
+            this.StdDevTb.Location = new System.Drawing.Point(59, 56);
             this.StdDevTb.Margin = new System.Windows.Forms.Padding(4);
             this.StdDevTb.Name = "StdDevTb";
-            this.StdDevTb.Size = new System.Drawing.Size(75, 22);
+            this.StdDevTb.Size = new System.Drawing.Size(132, 22);
             this.StdDevTb.TabIndex = 14;
-            this.StdDevTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -452,18 +365,17 @@ namespace bitmath
             this.label3.Location = new System.Drawing.Point(8, 59);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 17);
+            this.label3.Size = new System.Drawing.Size(44, 17);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Std. dev";
+            this.label3.Text = "Stdev";
             // 
             // MeanTb
             // 
-            this.MeanTb.Location = new System.Drawing.Point(84, 23);
+            this.MeanTb.Location = new System.Drawing.Point(59, 24);
             this.MeanTb.Margin = new System.Windows.Forms.Padding(4);
             this.MeanTb.Name = "MeanTb";
-            this.MeanTb.Size = new System.Drawing.Size(75, 22);
+            this.MeanTb.Size = new System.Drawing.Size(132, 22);
             this.MeanTb.TabIndex = 12;
-            this.MeanTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -477,59 +389,16 @@ namespace bitmath
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.groupBox6);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Location = new System.Drawing.Point(16, 186);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(755, 185);
+            this.groupBox4.Size = new System.Drawing.Size(577, 185);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Render settings";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.DefaultToTb);
-            this.groupBox7.Controls.Add(this.DefaultRb);
-            this.groupBox7.Controls.Add(this.ProbabilisticChoiceRb);
-            this.groupBox7.Location = new System.Drawing.Point(585, 25);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(163, 153);
-            this.groupBox7.TabIndex = 2;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Indeterminate voxels";
-            // 
-            // DefaultToTb
-            // 
-            this.DefaultToTb.Location = new System.Drawing.Point(102, 49);
-            this.DefaultToTb.Name = "DefaultToTb";
-            this.DefaultToTb.Size = new System.Drawing.Size(54, 22);
-            this.DefaultToTb.TabIndex = 2;
-            this.DefaultToTb.Text = "0.1";
-            // 
-            // DefaultRb
-            // 
-            this.DefaultRb.AutoSize = true;
-            this.DefaultRb.Checked = true;
-            this.DefaultRb.Location = new System.Drawing.Point(6, 50);
-            this.DefaultRb.Name = "DefaultRb";
-            this.DefaultRb.Size = new System.Drawing.Size(90, 21);
-            this.DefaultRb.TabIndex = 1;
-            this.DefaultRb.TabStop = true;
-            this.DefaultRb.Text = "Default to";
-            this.DefaultRb.UseVisualStyleBackColor = true;
-            // 
-            // ProbabilisticChoiceRb
-            // 
-            this.ProbabilisticChoiceRb.AutoSize = true;
-            this.ProbabilisticChoiceRb.Location = new System.Drawing.Point(6, 21);
-            this.ProbabilisticChoiceRb.Name = "ProbabilisticChoiceRb";
-            this.ProbabilisticChoiceRb.Size = new System.Drawing.Size(150, 21);
-            this.ProbabilisticChoiceRb.TabIndex = 0;
-            this.ProbabilisticChoiceRb.Text = "Probabilistic choice";
-            this.ProbabilisticChoiceRb.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -546,7 +415,7 @@ namespace bitmath
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(292, 153);
+            this.groupBox6.Size = new System.Drawing.Size(284, 153);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Batch mode";
@@ -571,7 +440,7 @@ namespace bitmath
             this.AnimationEditorBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.AnimationEditorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AnimationEditorBtn.ForeColor = System.Drawing.Color.DarkGray;
-            this.AnimationEditorBtn.Location = new System.Drawing.Point(156, 105);
+            this.AnimationEditorBtn.Location = new System.Drawing.Point(153, 105);
             this.AnimationEditorBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AnimationEditorBtn.Name = "AnimationEditorBtn";
             this.AnimationEditorBtn.Size = new System.Drawing.Size(128, 30);
@@ -582,7 +451,7 @@ namespace bitmath
             // frameCtTb
             // 
             this.frameCtTb.Enabled = false;
-            this.frameCtTb.Location = new System.Drawing.Point(136, 71);
+            this.frameCtTb.Location = new System.Drawing.Point(132, 71);
             this.frameCtTb.Margin = new System.Windows.Forms.Padding(4);
             this.frameCtTb.Name = "frameCtTb";
             this.frameCtTb.ReadOnly = true;
@@ -624,7 +493,7 @@ namespace bitmath
             this.SelectBatchOutputDirectoryBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.SelectBatchOutputDirectoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectBatchOutputDirectoryBtn.ForeColor = System.Drawing.Color.DarkGray;
-            this.SelectBatchOutputDirectoryBtn.Location = new System.Drawing.Point(237, 37);
+            this.SelectBatchOutputDirectoryBtn.Location = new System.Drawing.Point(229, 37);
             this.SelectBatchOutputDirectoryBtn.Margin = new System.Windows.Forms.Padding(4);
             this.SelectBatchOutputDirectoryBtn.Name = "SelectBatchOutputDirectoryBtn";
             this.SelectBatchOutputDirectoryBtn.Size = new System.Drawing.Size(47, 28);
@@ -639,7 +508,7 @@ namespace bitmath
             this.BatchOutputTb.Margin = new System.Windows.Forms.Padding(4);
             this.BatchOutputTb.Name = "BatchOutputTb";
             this.BatchOutputTb.ReadOnly = true;
-            this.BatchOutputTb.Size = new System.Drawing.Size(160, 22);
+            this.BatchOutputTb.Size = new System.Drawing.Size(153, 22);
             this.BatchOutputTb.TabIndex = 2;
             // 
             // label6
@@ -767,6 +636,61 @@ namespace bitmath
             this.label4.TabIndex = 0;
             this.label4.Text = "# of voxels";
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.ColorVisualizerBoxOff);
+            this.groupBox7.Controls.Add(this.ColorVisualizerBoxOn);
+            this.groupBox7.Controls.Add(this.DefaultToTb);
+            this.groupBox7.Controls.Add(this.DefaultRb);
+            this.groupBox7.Controls.Add(this.ProbabilisticChoiceRb);
+            this.groupBox7.Location = new System.Drawing.Point(16, 33);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(163, 140);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Values";
+            // 
+            // ColorVisualizerBoxOff
+            // 
+            this.ColorVisualizerBoxOff.BackColor = System.Drawing.Color.White;
+            this.ColorVisualizerBoxOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ColorVisualizerBoxOff.Location = new System.Drawing.Point(6, 78);
+            this.ColorVisualizerBoxOff.Margin = new System.Windows.Forms.Padding(4);
+            this.ColorVisualizerBoxOff.Name = "ColorVisualizerBoxOff";
+            this.ColorVisualizerBoxOff.Size = new System.Drawing.Size(71, 20);
+            this.ColorVisualizerBoxOff.TabIndex = 6;
+            this.ColorVisualizerBoxOff.Click += new System.EventHandler(this.ColorVisualizerBoxOff_Click);
+            // 
+            // DefaultToTb
+            // 
+            this.DefaultToTb.Location = new System.Drawing.Point(102, 49);
+            this.DefaultToTb.Name = "DefaultToTb";
+            this.DefaultToTb.Size = new System.Drawing.Size(54, 22);
+            this.DefaultToTb.TabIndex = 2;
+            this.DefaultToTb.Text = "on";
+            // 
+            // DefaultRb
+            // 
+            this.DefaultRb.AutoSize = true;
+            this.DefaultRb.Checked = true;
+            this.DefaultRb.Location = new System.Drawing.Point(6, 50);
+            this.DefaultRb.Name = "DefaultRb";
+            this.DefaultRb.Size = new System.Drawing.Size(90, 21);
+            this.DefaultRb.TabIndex = 1;
+            this.DefaultRb.TabStop = true;
+            this.DefaultRb.Text = "Default to";
+            this.DefaultRb.UseVisualStyleBackColor = true;
+            // 
+            // ProbabilisticChoiceRb
+            // 
+            this.ProbabilisticChoiceRb.AutoSize = true;
+            this.ProbabilisticChoiceRb.Location = new System.Drawing.Point(6, 21);
+            this.ProbabilisticChoiceRb.Name = "ProbabilisticChoiceRb";
+            this.ProbabilisticChoiceRb.Size = new System.Drawing.Size(150, 21);
+            this.ProbabilisticChoiceRb.TabIndex = 0;
+            this.ProbabilisticChoiceRb.Text = "Probabilistic choice";
+            this.ProbabilisticChoiceRb.UseVisualStyleBackColor = true;
+            // 
             // MainMenu
             // 
             this.MainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -777,7 +701,7 @@ namespace bitmath
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.MainMenu.Size = new System.Drawing.Size(785, 28);
+            this.MainMenu.Size = new System.Drawing.Size(607, 28);
             this.MainMenu.TabIndex = 4;
             // 
             // fileToolStripMenuItem
@@ -897,6 +821,11 @@ namespace bitmath
             this.ChangeColorDialog.AnyColor = true;
             this.ChangeColorDialog.FullOpen = true;
             // 
+            // VoxelsS
+            // 
+            this.VoxelsS.DataSetName = "Voxels";
+            this.VoxelsS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ControlStateSource
             // 
             this.ControlStateSource.DataSource = this.ControlStateS;
@@ -907,19 +836,14 @@ namespace bitmath
             this.ControlStateS.DataSetName = "ControlState";
             this.ControlStateS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // VoxelsS
-            // 
-            this.VoxelsS.DataSetName = "Voxels";
-            this.VoxelsS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // TransformCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 384);
+            this.ClientSize = new System.Drawing.Size(607, 384);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.MainMenu);
             this.MainMenuStrip = this.MainMenu;
@@ -928,22 +852,20 @@ namespace bitmath
             this.Text = "Transform Creator | Bitmath";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoxelsS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ControlStateSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ControlStateS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VoxelsS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -963,14 +885,7 @@ namespace bitmath
         public TextBox TopRightMultiplierTb;
         public TextBox TopCenterMultiplierTb;
         public TextBox TopLeftMultiplierTb;
-        public GroupBox groupBox2;
-        public TextBox UpperBoundTb;
-        public Label label1;
-        public TextBox LowerBoundTb;
-        public ListBox VoxelPossibleValuesListBox;
-        public Panel ColorVisualizerBox;
-        public Button AddVoxelPossibleValueBtn;
-        public Button RemoveVoxelPossibleValueBtn;
+        public Panel ColorVisualizerBoxOn;
         public GroupBox groupBox3;
         public RadioButton GaussRb;
         public TextBox StdDevTb;
@@ -1024,6 +939,7 @@ namespace bitmath
         public BindingSource ControlStateSource;
         public ControlState ControlStateS;
         private Voxels VoxelsS;
+        public Panel ColorVisualizerBoxOff;
     }
 }
 

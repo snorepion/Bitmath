@@ -32,7 +32,7 @@ namespace bitmath {
         
         private TextBoxesDataTable tableTextBoxes;
         
-        private ListBoxesDataTable tableListBoxes;
+        private ColorViewsDataTable tableColorViews;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -74,8 +74,8 @@ namespace bitmath {
                 if ((ds.Tables["TextBoxes"] != null)) {
                     base.Tables.Add(new TextBoxesDataTable(ds.Tables["TextBoxes"]));
                 }
-                if ((ds.Tables["ListBoxes"] != null)) {
-                    base.Tables.Add(new ListBoxesDataTable(ds.Tables["ListBoxes"]));
+                if ((ds.Tables["ColorViews"] != null)) {
+                    base.Tables.Add(new ColorViewsDataTable(ds.Tables["ColorViews"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -139,9 +139,9 @@ namespace bitmath {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ListBoxesDataTable ListBoxes {
+        public ColorViewsDataTable ColorViews {
             get {
-                return this.tableListBoxes;
+                return this.tableColorViews;
             }
         }
         
@@ -224,8 +224,8 @@ namespace bitmath {
                 if ((ds.Tables["TextBoxes"] != null)) {
                     base.Tables.Add(new TextBoxesDataTable(ds.Tables["TextBoxes"]));
                 }
-                if ((ds.Tables["ListBoxes"] != null)) {
-                    base.Tables.Add(new ListBoxesDataTable(ds.Tables["ListBoxes"]));
+                if ((ds.Tables["ColorViews"] != null)) {
+                    base.Tables.Add(new ColorViewsDataTable(ds.Tables["ColorViews"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -284,10 +284,10 @@ namespace bitmath {
                     this.tableTextBoxes.InitVars();
                 }
             }
-            this.tableListBoxes = ((ListBoxesDataTable)(base.Tables["ListBoxes"]));
+            this.tableColorViews = ((ColorViewsDataTable)(base.Tables["ColorViews"]));
             if ((initTable == true)) {
-                if ((this.tableListBoxes != null)) {
-                    this.tableListBoxes.InitVars();
+                if ((this.tableColorViews != null)) {
+                    this.tableColorViews.InitVars();
                 }
             }
         }
@@ -308,8 +308,8 @@ namespace bitmath {
             base.Tables.Add(this.tableComboBoxes);
             this.tableTextBoxes = new TextBoxesDataTable();
             base.Tables.Add(this.tableTextBoxes);
-            this.tableListBoxes = new ListBoxesDataTable();
-            base.Tables.Add(this.tableListBoxes);
+            this.tableColorViews = new ColorViewsDataTable();
+            base.Tables.Add(this.tableColorViews);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -338,7 +338,7 @@ namespace bitmath {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeListBoxes() {
+        private bool ShouldSerializeColorViews() {
             return false;
         }
         
@@ -410,7 +410,7 @@ namespace bitmath {
         public delegate void TextBoxesRowChangeEventHandler(object sender, TextBoxesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void ListBoxesRowChangeEventHandler(object sender, ListBoxesRowChangeEvent e);
+        public delegate void ColorViewsRowChangeEventHandler(object sender, ColorViewsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1545,16 +1545,16 @@ namespace bitmath {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ListBoxesDataTable : global::System.Data.TypedTableBase<ListBoxesRow> {
+        public partial class ColorViewsDataTable : global::System.Data.TypedTableBase<ColorViewsRow> {
             
             private global::System.Data.DataColumn columnControlNames;
             
-            private global::System.Data.DataColumn columnItems;
+            private global::System.Data.DataColumn columnBackColor;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ListBoxesDataTable() {
-                this.TableName = "ListBoxes";
+            public ColorViewsDataTable() {
+                this.TableName = "ColorViews";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1562,7 +1562,7 @@ namespace bitmath {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ListBoxesDataTable(global::System.Data.DataTable table) {
+            internal ColorViewsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1579,7 +1579,7 @@ namespace bitmath {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected ListBoxesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ColorViewsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1594,9 +1594,9 @@ namespace bitmath {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ItemsColumn {
+            public global::System.Data.DataColumn BackColorColumn {
                 get {
-                    return this.columnItems;
+                    return this.columnBackColor;
                 }
             }
             
@@ -1611,46 +1611,46 @@ namespace bitmath {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ListBoxesRow this[int index] {
+            public ColorViewsRow this[int index] {
                 get {
-                    return ((ListBoxesRow)(this.Rows[index]));
+                    return ((ColorViewsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ListBoxesRowChangeEventHandler ListBoxesRowChanging;
+            public event ColorViewsRowChangeEventHandler ColorViewsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ListBoxesRowChangeEventHandler ListBoxesRowChanged;
+            public event ColorViewsRowChangeEventHandler ColorViewsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ListBoxesRowChangeEventHandler ListBoxesRowDeleting;
+            public event ColorViewsRowChangeEventHandler ColorViewsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event ListBoxesRowChangeEventHandler ListBoxesRowDeleted;
+            public event ColorViewsRowChangeEventHandler ColorViewsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddListBoxesRow(ListBoxesRow row) {
+            public void AddColorViewsRow(ColorViewsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ListBoxesRow AddListBoxesRow(string ControlNames, object[] Items) {
-                ListBoxesRow rowListBoxesRow = ((ListBoxesRow)(this.NewRow()));
+            public ColorViewsRow AddColorViewsRow(string ControlNames, System.Drawing.Color BackColor) {
+                ColorViewsRow rowColorViewsRow = ((ColorViewsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ControlNames,
-                        Items};
-                rowListBoxesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowListBoxesRow);
-                return rowListBoxesRow;
+                        BackColor};
+                rowColorViewsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowColorViewsRow);
+                return rowColorViewsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ListBoxesDataTable cln = ((ListBoxesDataTable)(base.Clone()));
+                ColorViewsDataTable cln = ((ColorViewsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1658,14 +1658,14 @@ namespace bitmath {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ListBoxesDataTable();
+                return new ColorViewsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnControlNames = base.Columns["ControlNames"];
-                this.columnItems = base.Columns["Items"];
+                this.columnBackColor = base.Columns["BackColor"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1673,34 +1673,34 @@ namespace bitmath {
             private void InitClass() {
                 this.columnControlNames = new global::System.Data.DataColumn("ControlNames", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnControlNames);
-                this.columnItems = new global::System.Data.DataColumn("Items", typeof(object[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItems);
+                this.columnBackColor = new global::System.Data.DataColumn("BackColor", typeof(global::System.Drawing.Color), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBackColor);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ListBoxesRow NewListBoxesRow() {
-                return ((ListBoxesRow)(this.NewRow()));
+            public ColorViewsRow NewColorViewsRow() {
+                return ((ColorViewsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ListBoxesRow(builder);
+                return new ColorViewsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ListBoxesRow);
+                return typeof(ColorViewsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ListBoxesRowChanged != null)) {
-                    this.ListBoxesRowChanged(this, new ListBoxesRowChangeEvent(((ListBoxesRow)(e.Row)), e.Action));
+                if ((this.ColorViewsRowChanged != null)) {
+                    this.ColorViewsRowChanged(this, new ColorViewsRowChangeEvent(((ColorViewsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1708,8 +1708,8 @@ namespace bitmath {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ListBoxesRowChanging != null)) {
-                    this.ListBoxesRowChanging(this, new ListBoxesRowChangeEvent(((ListBoxesRow)(e.Row)), e.Action));
+                if ((this.ColorViewsRowChanging != null)) {
+                    this.ColorViewsRowChanging(this, new ColorViewsRowChangeEvent(((ColorViewsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1717,8 +1717,8 @@ namespace bitmath {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ListBoxesRowDeleted != null)) {
-                    this.ListBoxesRowDeleted(this, new ListBoxesRowChangeEvent(((ListBoxesRow)(e.Row)), e.Action));
+                if ((this.ColorViewsRowDeleted != null)) {
+                    this.ColorViewsRowDeleted(this, new ColorViewsRowChangeEvent(((ColorViewsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1726,14 +1726,14 @@ namespace bitmath {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ListBoxesRowDeleting != null)) {
-                    this.ListBoxesRowDeleting(this, new ListBoxesRowChangeEvent(((ListBoxesRow)(e.Row)), e.Action));
+                if ((this.ColorViewsRowDeleting != null)) {
+                    this.ColorViewsRowDeleting(this, new ColorViewsRowChangeEvent(((ColorViewsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveListBoxesRow(ListBoxesRow row) {
+            public void RemoveColorViewsRow(ColorViewsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1760,7 +1760,7 @@ namespace bitmath {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ListBoxesDataTable";
+                attribute2.FixedValue = "ColorViewsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2256,15 +2256,15 @@ namespace bitmath {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ListBoxesRow : global::System.Data.DataRow {
+        public partial class ColorViewsRow : global::System.Data.DataRow {
             
-            private ListBoxesDataTable tableListBoxes;
+            private ColorViewsDataTable tableColorViews;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal ListBoxesRow(global::System.Data.DataRowBuilder rb) : 
+            internal ColorViewsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableListBoxes = ((ListBoxesDataTable)(this.Table));
+                this.tableColorViews = ((ColorViewsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2272,55 +2272,55 @@ namespace bitmath {
             public string ControlNames {
                 get {
                     try {
-                        return ((string)(this[this.tableListBoxes.ControlNamesColumn]));
+                        return ((string)(this[this.tableColorViews.ControlNamesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ControlNames\' in table \'ListBoxes\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ControlNames\' in table \'ColorViews\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListBoxes.ControlNamesColumn] = value;
+                    this[this.tableColorViews.ControlNamesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public object[] Items {
+            public System.Drawing.Color BackColor {
                 get {
                     try {
-                        return ((object[])(this[this.tableListBoxes.ItemsColumn]));
+                        return ((global::System.Drawing.Color)(this[this.tableColorViews.BackColorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Items\' in table \'ListBoxes\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'BackColor\' in table \'ColorViews\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableListBoxes.ItemsColumn] = value;
+                    this[this.tableColorViews.BackColorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsControlNamesNull() {
-                return this.IsNull(this.tableListBoxes.ControlNamesColumn);
+                return this.IsNull(this.tableColorViews.ControlNamesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetControlNamesNull() {
-                this[this.tableListBoxes.ControlNamesColumn] = global::System.Convert.DBNull;
+                this[this.tableColorViews.ControlNamesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsItemsNull() {
-                return this.IsNull(this.tableListBoxes.ItemsColumn);
+            public bool IsBackColorNull() {
+                return this.IsNull(this.tableColorViews.BackColorColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetItemsNull() {
-                this[this.tableListBoxes.ItemsColumn] = global::System.Convert.DBNull;
+            public void SetBackColorNull() {
+                this[this.tableColorViews.BackColorColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2464,22 +2464,22 @@ namespace bitmath {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class ListBoxesRowChangeEvent : global::System.EventArgs {
+        public class ColorViewsRowChangeEvent : global::System.EventArgs {
             
-            private ListBoxesRow eventRow;
+            private ColorViewsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ListBoxesRowChangeEvent(ListBoxesRow row, global::System.Data.DataRowAction action) {
+            public ColorViewsRowChangeEvent(ColorViewsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ListBoxesRow Row {
+            public ColorViewsRow Row {
                 get {
                     return this.eventRow;
                 }

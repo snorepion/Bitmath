@@ -13,16 +13,16 @@ namespace bitmath
 {
     public class Voxel
     {
-        public Voxel(double w, double v, int x, int y)
+        public Voxel(double w, Switch s, int x, int y)
         {
             Weight = w;
-            Value = v;
+            Value = s;
             Position = new Point(x, y);
         }
         public double Weight { get; set; }
-        public double Value { get; set; }
+        public Switch Value { get; set; }
         public Point Position { get; set; }
-        public static Voxel[,] GenerateVoxels(int xs, int ys, Double[] weights, Double[,] extrWeights, WeightType[,] extrWeightsType, int ChoiceType, double max, double min, double stdev, double[] vals = null, double Default=0.0)
+        public static Voxel[,] GenerateVoxels(int xs, int ys, Double[] weights, Double[,] extrWeights, WeightType[,] extrWeightsType, int ChoiceType, Switch Default=Switch.Indeterminate)
         {
             int x = 0;
             int y = 0;
@@ -30,21 +30,11 @@ namespace bitmath
             CryptoRandomSource r = new CryptoRandomSource();
             int x2 = 0;
             int y2 = 0;
-            int i2 = 0;
             int ind = 0;
-            double d2 = 0;
             while (y2 < ys)
             {
                 while (x2 < xs) {
-                    if (ChoiceType == 0)
-                    {
-                        i2 = r.Next(0, vals.Length);
-                        d2 = Reduce(vals[i2], stdev);
-                        if (d2 == 0) d2 = 1;
-                    }
-                    else d2 = Default;
-                    section[x2, y2] = new Voxel(weights[ind], d2, x2, y2);
-                    d2 = 0;
+                    section[x2, y2] = new Voxel(weights[ind], Switch.Indeterminate, x2, y2);
                     ++x2;
                     ++ind;
                 }
@@ -60,7 +50,6 @@ namespace bitmath
             Voxel BottomCenter = new Voxel(0.0, 0.0, 0, 0);
             Voxel BottomRight = new Voxel(0.0, 0.0, 0, 0);
             double d = 0;
-            int i = 0;
             while (y < ys)
             {
                 while (x < xs)
@@ -84,13 +73,15 @@ namespace bitmath
                     {
                         if (ChoiceType == 0)
                         {
-                            i = r.Next(0, vals.Length);
-                            d = Reduce(vals[i], stdev);
-                            if (d == 0) d = 0.1;
+                            if (r.Next(-1, 0) == 0) d = 1;
+                            else d = -1;
                         }
-                        else d = Default;
+                        else {
+                            d = (int)Default;
+                        }
                     }
-                    section[x, y].Value = Flatten(d, max, min);
+                    if (d < 0) section[x, y].Value = Switch.Off;
+                    else section[x, y].Value = Switch.On;
                     ++x;
                 }
                 ++y;
@@ -98,39 +89,15 @@ namespace bitmath
             }
             return section;
         }
-        public static Bitmap RenderAll(Voxel[,] v, int xs, int ys, System.Drawing.Imaging.PixelFormat pf, Dictionary<Double[],Color[]> Colormap)
+        public static Bitmap RenderAll(Voxel[,] v, int xs, int ys, System.Drawing.Imaging.PixelFormat pf, Color[] colors)
         {
             Bitmap b = new Bitmap(xs, ys, pf);
-            bool f = false;
-            int i = 0;
             foreach (Voxel ve in v)
             {
-                while (f==false)
-                {
-                    f = IsBetween(ve.Value, Colormap.Keys.ElementAt(i)[0], Colormap.Keys.ElementAt(i)[1]);
-                    i++;
-                }
-                b.SetPixel(ve.Position.X, ve.Position.Y, Colormap.Values.ElementAt(i-1)[0]);
+                if (ve.Value == Switch.Off) b.SetPixel(ve.Position.X, ve.Position.Y, colors[0]);
+                else b.SetPixel(ve.Position.X, ve.Position.Y, colors[1]);
             }
             return b;
-        }
-        internal static double Reduce(double a, double b)
-        {
-            if (a < 0) return a + b;
-            else return a - b;
-        }
-        internal static double Flatten(double a, double b, double c)
-        {
-            if (a >= 0)
-            {
-                if (a > b) return b;
-                else return a;
-            }
-            else
-            {
-                if (a < c) return c;
-                else return a;
-            }
         }
         internal static bool IsBetween(double inp, double i, double ii)
         {
@@ -142,97 +109,97 @@ namespace bitmath
             switch (w[0, 0])
             {
                 case (WeightType.Add):
-                    v += (E[0,0] + V[0].Value * V[0].Weight);
+                    v += (E[0,0] + (int)V[0].Value * V[0].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[0].Value * V[0].Weight), E[0, 0]); // (V[0].Value * V[0].Weight) ^ E[0,0]
+                    v += Math.Pow(((int)V[0].Value * V[0].Weight), E[0, 0]); // (V[0].Value * V[0].Weight) ^ E[0,0]
                     break;
                 case (WeightType.Times):
-                    v += E[0, 0] * (V[0].Value * V[0].Weight);
+                    v += E[0, 0] * ((int)V[0].Value * V[0].Weight);
                     break;
             }
             switch (w[0, 1])
             {
                 case (WeightType.Add):
-                    v += (E[0, 1] + V[1].Value * V[1].Weight);
+                    v += (E[0, 1] + (int)V[1].Value * V[1].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[1].Value * V[1].Weight), E[0, 1]);
+                    v += Math.Pow(((int)V[1].Value * V[1].Weight), E[0, 1]);
                     break;
                 case (WeightType.Times):
-                    v += E[0, 1] * (V[1].Value * V[1].Weight);
+                    v += E[0, 1] * ((int)V[1].Value * V[1].Weight);
                     break;
             }
             switch (w[0, 2])
             {
                 case (WeightType.Add):
-                    v += (E[0, 2] + V[2].Value * V[2].Weight);
+                    v += (E[0, 2] + (int)V[2].Value * V[2].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[2].Value * V[2].Weight), E[0, 2]);
+                    v += Math.Pow(((int)V[2].Value * V[2].Weight), E[0, 2]);
                     break;
                 case (WeightType.Times):
-                    v += E[0, 2] * (V[2].Value * V[2].Weight);
+                    v += E[0, 2] * ((int)V[2].Value * V[2].Weight);
                     break;
             }
             switch (w[1, 0])
             {
                 case (WeightType.Add):
-                    v += (E[1, 0] + V[3].Value * V[3].Weight);
+                    v += (E[1, 0] + (int)V[3].Value * V[3].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[3].Value * V[3].Weight), E[1, 0]);
+                    v += Math.Pow(((int)V[3].Value * V[3].Weight), E[1, 0]);
                     break;
                 case (WeightType.Times):
-                    v += E[1, 0] * (V[3].Value * V[3].Weight);
+                    v += E[1, 0] * ((int)V[3].Value * V[3].Weight);
                     break;
             }
             switch (w[1, 2])
             {
                 case (WeightType.Add):
-                    v += (E[1, 2] + V[4].Value * V[4].Weight);
+                    v += (E[1, 2] + (int)V[4].Value * V[4].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[4].Value * V[4].Weight), E[1, 2]);
+                    v += Math.Pow(((int)V[4].Value * V[4].Weight), E[1, 2]);
                     break;
                 case (WeightType.Times):
-                    v += E[1, 2] * (V[4].Value * V[4].Weight);
+                    v += E[1, 2] * ((int)V[4].Value * V[4].Weight);
                     break;
             }
             switch (w[2, 0])
             {
                 case (WeightType.Add):
-                    v += (E[2, 0] + V[5].Value * V[5].Weight);
+                    v += (E[2, 0] + (int)V[5].Value * V[5].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[5].Value * V[5].Weight), E[2, 0]);
+                    v += Math.Pow(((int)V[5].Value * V[5].Weight), E[2, 0]);
                     break;
                 case (WeightType.Times):
-                    v += E[2, 0] * (V[5].Value * V[5].Weight);
+                    v += E[2, 0] * ((int)V[5].Value * V[5].Weight);
                     break;
             }
             switch (w[2, 1])
             {
                 case (WeightType.Add):
-                    v += (E[2, 1] + V[6].Value * V[6].Weight);
+                    v += (E[2, 1] + (int)V[6].Value * V[6].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[6].Value * V[6].Weight), E[2, 1]);
+                    v += Math.Pow(((int)V[6].Value * V[6].Weight), E[2, 1]);
                     break;
                 case (WeightType.Times):
-                    v += E[2, 1] * (V[6].Value * V[6].Weight);
+                    v += E[2, 1] * ((int)V[6].Value * V[6].Weight);
                     break;
             }
             switch (w[2, 2])
             {
                 case (WeightType.Add):
-                    v += (E[2, 2] + V[7].Value * V[7].Weight);
+                    v += (E[2, 2] + (int)V[7].Value * V[7].Weight);
                     break;
                 case (WeightType.Exp):
-                    v += Math.Pow((V[7].Value * V[7].Weight), E[2, 2]);
+                    v += Math.Pow(((int)V[7].Value * V[7].Weight), E[2, 2]);
                     break;
                 case (WeightType.Times):
-                    v += E[2, 2] * (V[7].Value * V[7].Weight);
+                    v += E[2, 2] * ((int)V[7].Value * V[7].Weight);
                     break;
             }
             return v;
@@ -245,5 +212,9 @@ namespace bitmath
     public enum WeightType
     {
         Add, Exp, Times
+    }
+    public enum Switch
+    {
+        On, Off, Indeterminate
     }
 }

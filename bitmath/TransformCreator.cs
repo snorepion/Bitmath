@@ -14,7 +14,7 @@ namespace bitmath
 {
     public partial class TransformCreator : Form
     {
-        Dictionary<Double[], Color[]> ColorMap = new Dictionary<Double[], Color[]>(); // Only one color is actually present in this array; however, to change the value of the color within a dictionary, it has to be an array.
+        Color[] ColorMap = new Color[2];
         WeightType[,] wt = new WeightType[,] {
             { WeightType.Times, WeightType.Times, WeightType.Times },
             { WeightType.Times, WeightType.Times, WeightType.Times },
@@ -47,58 +47,24 @@ namespace bitmath
                 { BottomRightMultiplierTb, new Point(2, 2) }
             };
         }
-        #region Voxel values section
-        private void VoxelPossibleValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        #region Voxel values
+        private void ColorVisualizerBoxOff_Click(object sender, EventArgs e)
         {
-            try
+            ChangeColorDialog.Color = ColorVisualizerBoxOff.BackColor;
+            if (ChangeColorDialog.ShowDialog()==DialogResult.OK)
             {
-                LowerBoundTb.Text = ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString();
-                UpperBoundTb.Text = ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[1].ToString();
-                ColorVisualizerBox.BackColor = ColorMap.Values.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0];
+                ColorVisualizerBoxOff.BackColor = ChangeColorDialog.Color;
             }
-            catch { }
+            ColorMap[0] = ColorVisualizerBoxOff.BackColor;
         }
-        private void AddVoxelPossibleValueBtn_Click(object sender, EventArgs e)
+        private void ColorVisualizerBoxOn_Click(object sender, EventArgs e)
         {
-            ColorMap.Add(new double[] { -1, 1 }, new Color[] { Color.Black });
-            VoxelPossibleValuesListBox.Items.Add("-1, 1 : Color[Black]");
-        }
-        private void RemoveVoxelPossibleValueBtn_Click(object sender, EventArgs e)
-        {
-            if (VoxelPossibleValuesListBox.Items.Count > 0)
+            ChangeColorDialog.Color = ColorVisualizerBoxOn.BackColor;
+            if (ChangeColorDialog.ShowDialog() == DialogResult.OK)
             {
-                ColorMap.Remove(ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex));
-                VoxelPossibleValuesListBox.Items.RemoveAt(VoxelPossibleValuesListBox.SelectedIndex);
+                ColorVisualizerBoxOn.BackColor = ChangeColorDialog.Color;
             }
-        }
-        private void LowerBoundTb_TextChanged(object sender, EventArgs e)
-        {
-            if (VoxelPossibleValuesListBox.Items.Count > 0 && VoxelPossibleValuesListBox.SelectedIndex >= 0)
-            {
-                Double.TryParse(LowerBoundTb.Text, out ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0]);
-                VoxelPossibleValuesListBox.Items[VoxelPossibleValuesListBox.SelectedIndex] = ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString() + ", " + ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[1].ToString() + " : " + ColorMap.Values.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString();
-            }
-        }
-        private void UpperBoundTb_TextChanged(object sender, EventArgs e)
-        {
-            if (VoxelPossibleValuesListBox.Items.Count > 0 && VoxelPossibleValuesListBox.SelectedIndex >= 0)
-            {
-                Double.TryParse(UpperBoundTb.Text, out ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[1]);
-                VoxelPossibleValuesListBox.Items[VoxelPossibleValuesListBox.SelectedIndex] = ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString() + ", " + ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[1].ToString() + " : " + ColorMap.Values.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString();
-            }
-        }
-        private void ColorVisualizerBox_Click(object sender, EventArgs e)
-        {
-            if (VoxelPossibleValuesListBox.Items.Count > 0 && VoxelPossibleValuesListBox.SelectedIndex >= 0)
-            {
-                ChangeColorDialog.Color = ColorVisualizerBox.BackColor;
-                if (ChangeColorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorVisualizerBox.BackColor = ChangeColorDialog.Color;
-                    ColorMap.Values.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0] = ChangeColorDialog.Color;
-                    VoxelPossibleValuesListBox.Items[VoxelPossibleValuesListBox.SelectedIndex] = ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString() + ", " + ColorMap.Keys.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[1].ToString() + " : " + ColorMap.Values.ElementAt(VoxelPossibleValuesListBox.SelectedIndex)[0].ToString();
-                }
-            }
+            ColorMap[1] = ColorVisualizerBoxOn.BackColor;
         }
         #endregion
         #region Effects of other voxels
@@ -142,16 +108,34 @@ namespace bitmath
         private void CreateNew()
         {
             Size s = GetRenderSize();
-            if (Double.TryParse(MeanTb.Text, out double m1) && Double.TryParse(StdDevTb.Text, out double m2) && Double.TryParse(DefaultToTb.Text, out double m3))
+            if (Double.TryParse(MeanTb.Text, out double m1) && Double.TryParse(StdDevTb.Text, out double m2) && SwitchTryParse(DefaultToTb.Text, out Switch m3))
             {
                 CryptoRandomSource r = new CryptoRandomSource();
                 Normal n = new Normal(m1, m2);
                 double[] samp = new double[s.Width * s.Height];
                 n.Samples(samp);
                 samp = samp.OrderBy(x => r.Next()).ToArray();
-                Cur = Voxel.GenerateVoxels(s.Width, s.Height, samp, externalWeights, wt, GetChoiceType(), m2, ColorMap.Keys.Select(x => x[0]).ToArray(), m3);
+                Cur = Voxel.GenerateVoxels(s.Width, s.Height, samp, externalWeights, wt, GetChoiceType(), m3);
             }
             else MessageBox.Show("Render failed: inappropriate text for weights.");
+        }
+        private bool SwitchTryParse(string _in, out Switch s)
+        {
+            if (_in.Equals("on", StringComparison.CurrentCultureIgnoreCase))
+            {
+                s = Switch.On;
+                return true;
+            }
+            else if (_in.Equals("on", StringComparison.CurrentCultureIgnoreCase))
+            {
+                s = Switch.Off;
+                return true;
+            }
+            else
+            {
+                s = Switch.Indeterminate;
+                return false;
+            }
         }
         private void RenderCurrent()
         {
@@ -253,7 +237,7 @@ namespace bitmath
             { WeightType.Times, WeightType.Times, WeightType.Times },
             { WeightType.Times, WeightType.Times, WeightType.Times }
             };
-            ColorMap = new Dictionary<Double[], Color[]>();
+            ColorMap = new Color[2];
             CurrentSelected = new Point(0, 0);
             Cur = new Voxel[0, 0];
         }
@@ -280,9 +264,9 @@ namespace bitmath
         }
         private void SerializeForm(string fn)
         {
-            foreach (ListBox l in this.Descendants<ListBox>())
-                ControlStateS.Tables["ListBoxes"].Rows.Add(l.Name, l.Items.Cast<Object>().ToArray());
-            ControlStateS.Tables["ListBoxes"].AcceptChanges();
+            foreach (Panel l in this.Descendants<Panel>())
+                ControlStateS.Tables["ColorViews"].Rows.Add(l.Name, l.BackColor);
+            ControlStateS.Tables["ColorViews"].AcceptChanges();
             foreach (ComboBox cb in this.Descendants<ComboBox>())
                 ControlStateS.Tables["ComboBoxes"].Rows.Add(cb.Name, cb.SelectedIndex, cb.Text, cb.Enabled);
             ControlStateS.Tables["ComboBoxes"].AcceptChanges();
@@ -295,10 +279,14 @@ namespace bitmath
             foreach (TextBox tb in this.Descendants<TextBox>())
                 ControlStateS.Tables["TextBoxes"].Rows.Add(tb.Name, tb.Text, tb.ReadOnly, tb.Enabled);
             ControlStateS.Tables["TextBoxes"].AcceptChanges();
+            Console.Write("Finished saving control states, proceeding to voxel data (if present).\r\n");
             if (Cur != default(Voxel[,]))
             {
                 foreach (Voxel v in Cur)
-                    VoxelsS.Tables["VoxelData"].Rows.Add(v.Value, v.Weight, v.Position);
+                {
+                    VoxelsS.Tables["VoxelData"].Rows.Add((int)v.Value, v.Weight, v.Position);
+                    Console.Write("hc" + v.GetHashCode() + " written\r\n");
+                }
             }
             string statefn = Path.GetTempFileName();
             string voxfn = Path.GetTempFileName();
@@ -321,12 +309,12 @@ namespace bitmath
                 SetCheckBoxProperties(Controls.Find(d["ControlNames"].ToString(), true)[0] as CheckBox, (bool)d["Checked"], (bool)d["Enabled"]);
             foreach (DataRow d in ControlStateS.Tables["RadioButtons"].Rows)
                 SetRadioButtonProperties(Controls.Find(d["ControlNames"].ToString(), true)[0] as RadioButton, (bool)d["Checked"], (bool)d["Enabled"]);
-            foreach (DataRow d in ControlStateS.Tables["ListBoxes"].Rows)
-                SetListBoxProperties(Controls.Find(d["ControlNames"].ToString(), true)[0] as ListBox, (object[])d["Items"]);
+            foreach (DataRow d in ControlStateS.Tables["ColorViews"].Rows)
+                (Controls.Find(d["ControlNames"].ToString(), true)[0] as Panel).BackColor = (Color)d["BackColor"];
             List<Voxel> VoxelsFromFile = new List<Voxel>();
             VoxelsS.ReadXml(voxfn);
             foreach (DataRow d in VoxelsS.Tables["VoxelData"].Rows)
-                VoxelsFromFile.Add(new Voxel((double)d["W"], (double)d["Val"], ((Point)d["Pos"]).X, ((Point)d["Pos"]).Y));
+                VoxelsFromFile.Add(new Voxel((double)d["W"], (Switch)d["Val"], ((Point)d["Pos"]).X, ((Point)d["Pos"]).Y));
             if (VoxelsFromFile.Count > 0)
             {
                 Voxel final = VoxelsFromFile.Last();
@@ -380,6 +368,7 @@ namespace bitmath
             lb.Items.Clear();
             lb.Items.AddRange(items);
         }
+
     }
     public static class Extensions
     {

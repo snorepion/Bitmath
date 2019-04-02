@@ -379,7 +379,7 @@ namespace bitmath {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public VoxelDataRow AddVoxelDataRow(double Val, double W, System.Drawing.Point Pos) {
+            public VoxelDataRow AddVoxelDataRow(int Val, double W, System.Drawing.Point Pos) {
                 VoxelDataRow rowVoxelDataRow = ((VoxelDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Val,
@@ -415,7 +415,7 @@ namespace bitmath {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnVal = new global::System.Data.DataColumn("Val", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnVal = new global::System.Data.DataColumn("Val", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVal);
                 this.columnW = new global::System.Data.DataColumn("W", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnW);
@@ -563,10 +563,10 @@ namespace bitmath {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Val {
+            public int Val {
                 get {
                     try {
-                        return ((double)(this[this.tableVoxelData.ValColumn]));
+                        return ((int)(this[this.tableVoxelData.ValColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Val\' in table \'VoxelData\' is DBNull.", e);

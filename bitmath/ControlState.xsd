@@ -12,7 +12,7 @@
   <xs:element name="ControlState" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ControlState" msprop:Generator_UserDSName="ControlState">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="RadioButtons" msprop:Generator_TableClassName="RadioButtonsDataTable" msprop:Generator_TableVarName="tableRadioButtons" msprop:Generator_TablePropName="RadioButtons" msprop:Generator_RowDeletingName="RadioButtonsRowDeleting" msprop:Generator_RowChangingName="RadioButtonsRowChanging" msprop:Generator_RowEvHandlerName="RadioButtonsRowChangeEventHandler" msprop:Generator_RowDeletedName="RadioButtonsRowDeleted" msprop:Generator_UserTableName="RadioButtons" msprop:Generator_RowChangedName="RadioButtonsRowChanged" msprop:Generator_RowEvArgName="RadioButtonsRowChangeEvent" msprop:Generator_RowClassName="RadioButtonsRow">
+        <xs:element name="RadioButtons" msprop:Generator_TableClassName="RadioButtonsDataTable" msprop:Generator_TableVarName="tableRadioButtons" msprop:Generator_RowChangedName="RadioButtonsRowChanged" msprop:Generator_TablePropName="RadioButtons" msprop:Generator_RowDeletingName="RadioButtonsRowDeleting" msprop:Generator_RowChangingName="RadioButtonsRowChanging" msprop:Generator_RowEvHandlerName="RadioButtonsRowChangeEventHandler" msprop:Generator_RowDeletedName="RadioButtonsRowDeleted" msprop:Generator_RowClassName="RadioButtonsRow" msprop:Generator_UserTableName="RadioButtons" msprop:Generator_RowEvArgName="RadioButtonsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
@@ -21,7 +21,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CheckBoxes" msprop:Generator_TableClassName="CheckBoxesDataTable" msprop:Generator_TableVarName="tableCheckBoxes" msprop:Generator_TablePropName="CheckBoxes" msprop:Generator_RowDeletingName="CheckBoxesRowDeleting" msprop:Generator_RowChangingName="CheckBoxesRowChanging" msprop:Generator_RowEvHandlerName="CheckBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="CheckBoxesRowDeleted" msprop:Generator_UserTableName="CheckBoxes" msprop:Generator_RowChangedName="CheckBoxesRowChanged" msprop:Generator_RowEvArgName="CheckBoxesRowChangeEvent" msprop:Generator_RowClassName="CheckBoxesRow">
+        <xs:element name="CheckBoxes" msprop:Generator_TableClassName="CheckBoxesDataTable" msprop:Generator_TableVarName="tableCheckBoxes" msprop:Generator_RowChangedName="CheckBoxesRowChanged" msprop:Generator_TablePropName="CheckBoxes" msprop:Generator_RowDeletingName="CheckBoxesRowDeleting" msprop:Generator_RowChangingName="CheckBoxesRowChanging" msprop:Generator_RowEvHandlerName="CheckBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="CheckBoxesRowDeleted" msprop:Generator_RowClassName="CheckBoxesRow" msprop:Generator_UserTableName="CheckBoxes" msprop:Generator_RowEvArgName="CheckBoxesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
@@ -30,7 +30,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ComboBoxes" msprop:Generator_TableClassName="ComboBoxesDataTable" msprop:Generator_TableVarName="tableComboBoxes" msprop:Generator_TablePropName="ComboBoxes" msprop:Generator_RowDeletingName="ComboBoxesRowDeleting" msprop:Generator_RowChangingName="ComboBoxesRowChanging" msprop:Generator_RowEvHandlerName="ComboBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="ComboBoxesRowDeleted" msprop:Generator_UserTableName="ComboBoxes" msprop:Generator_RowChangedName="ComboBoxesRowChanged" msprop:Generator_RowEvArgName="ComboBoxesRowChangeEvent" msprop:Generator_RowClassName="ComboBoxesRow">
+        <xs:element name="ComboBoxes" msprop:Generator_TableClassName="ComboBoxesDataTable" msprop:Generator_TableVarName="tableComboBoxes" msprop:Generator_RowChangedName="ComboBoxesRowChanged" msprop:Generator_TablePropName="ComboBoxes" msprop:Generator_RowDeletingName="ComboBoxesRowDeleting" msprop:Generator_RowChangingName="ComboBoxesRowChanging" msprop:Generator_RowEvHandlerName="ComboBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="ComboBoxesRowDeleted" msprop:Generator_RowClassName="ComboBoxesRow" msprop:Generator_UserTableName="ComboBoxes" msprop:Generator_RowEvArgName="ComboBoxesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
@@ -40,7 +40,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TextBoxes" msprop:Generator_TableClassName="TextBoxesDataTable" msprop:Generator_TableVarName="tableTextBoxes" msprop:Generator_TablePropName="TextBoxes" msprop:Generator_RowDeletingName="TextBoxesRowDeleting" msprop:Generator_RowChangingName="TextBoxesRowChanging" msprop:Generator_RowEvHandlerName="TextBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="TextBoxesRowDeleted" msprop:Generator_UserTableName="TextBoxes" msprop:Generator_RowChangedName="TextBoxesRowChanged" msprop:Generator_RowEvArgName="TextBoxesRowChangeEvent" msprop:Generator_RowClassName="TextBoxesRow">
+        <xs:element name="TextBoxes" msprop:Generator_TableClassName="TextBoxesDataTable" msprop:Generator_TableVarName="tableTextBoxes" msprop:Generator_RowChangedName="TextBoxesRowChanged" msprop:Generator_TablePropName="TextBoxes" msprop:Generator_RowDeletingName="TextBoxesRowDeleting" msprop:Generator_RowChangingName="TextBoxesRowChanging" msprop:Generator_RowEvHandlerName="TextBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="TextBoxesRowDeleted" msprop:Generator_RowClassName="TextBoxesRow" msprop:Generator_UserTableName="TextBoxes" msprop:Generator_RowEvArgName="TextBoxesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
@@ -50,11 +50,11 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ListBoxes" msprop:Generator_TableClassName="ListBoxesDataTable" msprop:Generator_TableVarName="tableListBoxes" msprop:Generator_TablePropName="ListBoxes" msprop:Generator_RowDeletingName="ListBoxesRowDeleting" msprop:Generator_RowChangingName="ListBoxesRowChanging" msprop:Generator_RowEvHandlerName="ListBoxesRowChangeEventHandler" msprop:Generator_RowDeletedName="ListBoxesRowDeleted" msprop:Generator_UserTableName="ListBoxes" msprop:Generator_RowChangedName="ListBoxesRowChanged" msprop:Generator_RowEvArgName="ListBoxesRowChangeEvent" msprop:Generator_RowClassName="ListBoxesRow">
+        <xs:element name="ColorViews" msprop:Generator_TableClassName="ColorViewsDataTable" msprop:Generator_TableVarName="tableColorViews" msprop:Generator_RowChangedName="ColorViewsRowChanged" msprop:Generator_TablePropName="ColorViews" msprop:Generator_RowDeletingName="ColorViewsRowDeleting" msprop:Generator_RowChangingName="ColorViewsRowChanging" msprop:Generator_RowEvHandlerName="ColorViewsRowChangeEventHandler" msprop:Generator_RowDeletedName="ColorViewsRowDeleted" msprop:Generator_RowClassName="ColorViewsRow" msprop:Generator_UserTableName="ColorViews" msprop:Generator_RowEvArgName="ColorViewsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ControlNames" msprop:Generator_ColumnVarNameInTable="columnControlNames" msprop:Generator_ColumnPropNameInRow="ControlNames" msprop:Generator_ColumnPropNameInTable="ControlNamesColumn" msprop:Generator_UserColumnName="ControlNames" type="xs:string" minOccurs="0" />
-              <xs:element name="Items" msdata:DataType="System.Object[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnItems" msprop:Generator_ColumnPropNameInRow="Items" msprop:Generator_ColumnPropNameInTable="ItemsColumn" msprop:Generator_UserColumnName="Items" type="xs:anyType" minOccurs="0" />
+              <xs:element name="BackColor" msdata:DataType="System.Drawing.Color, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" msprop:Generator_ColumnVarNameInTable="columnBackColor" msprop:Generator_ColumnPropNameInRow="BackColor" msprop:Generator_ColumnPropNameInTable="BackColorColumn" msprop:Generator_UserColumnName="BackColor" type="xs:anyType" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

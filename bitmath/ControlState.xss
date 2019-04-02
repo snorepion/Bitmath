@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:CheckBoxes" ZOrder="3" X="153" Y="2" Height="102" Width="153" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="98" />
     <Shape ID="DesignTable:ComboBoxes" ZOrder="2" X="305" Y="2" Height="125" Width="162" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:TextBoxes" ZOrder="1" X="459" Y="2" Height="125" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:ListBoxes" ZOrder="5" X="617" Y="3" Height="79" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
+    <Shape ID="DesignTable:ColorViews" ZOrder="5" X="617" Y="3" Height="79" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
