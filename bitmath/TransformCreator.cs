@@ -126,7 +126,7 @@ namespace bitmath
                 s = Switch.On;
                 return true;
             }
-            else if (_in.Equals("on", StringComparison.CurrentCultureIgnoreCase))
+            else if (_in.Equals("off", StringComparison.CurrentCultureIgnoreCase))
             {
                 s = Switch.Off;
                 return true;
